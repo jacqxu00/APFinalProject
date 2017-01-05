@@ -1,17 +1,18 @@
 import java.lang.Math;
+import java.util.*;
 
-public class Sim {
-    double mass;
-    double height;
-    double gravity;
-    double coeff;
-    double velocity;
-    double dist;
-    double totalE;
-    double kineticE;
-    double potentialE;
-    double thermalE;
-    double angle;
+public class Sim implements ActionListener {
+    private double mass;
+    private double height;
+    private double gravity;
+    private double coeff;
+    private double velocity;
+    private double dist;
+    private double totalE;
+    private double kineticE;
+    private double potentialE;
+    private double thermalE;
+    private double angle;
 
     public Sim() {
 	mass = 50.0;
@@ -20,6 +21,8 @@ public class Sim {
 	height = 0;
 	velocity = 0;
     }
+
+    // MATH
 
     public void setHeight(double h) {
 	height = h;
@@ -62,4 +65,5 @@ public class Sim {
 	kineticE = ans;
 	return ans;
     }
+
 }
