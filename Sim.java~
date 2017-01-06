@@ -5,21 +5,22 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Sim extends JFrame {
-    private static double mass;
-    private static double height;
-    private static double gravity;
-    private static double coeff;
-    private static double velocity;
-    private static double dist;
-    private static double totalE;
-    private static double kineticE;
-    private static double potentialE;
-    private static double thermalE;
-    private static double angle;
-    private static Container pane;
-    private static JTextField m;
-    private static JTextField g;
-    private static JTextField c;
+    private double mass;
+    private double height;
+    private double gravity;
+    private double coeff;
+    private double velocity;
+    private double dist;
+    private double totalE;
+    private double kineticE;
+    private double potentialE;
+    private double thermalE;
+    private double angle;
+    private Container pane;
+    private JTextField m;
+    private JTextField g;
+    private JTextField c;
+    private Container pane;
 
     public Sim() {
 	mass = 50.0;
@@ -49,49 +50,49 @@ public class Sim extends JFrame {
 
     // MATH
 
-    public static void setHeight(double h) {
+    public void setHeight(double h) {
 	height = h;
     }
 
-    public static void setMass(double m) {
+    public void setMass(double m) {
 	mass = m;
     }
 
-    public static void setGravity(double g) {
+    public void setGravity(double g) {
 	gravity = g;
     }
    
-    public static void setCoeff(double c) {
+    public void setCoeff(double c) {
 	coeff = c;
     }
 
-    public static double setPotEnergy() {
+    public double setPotEnergy() {
 	double ans = mass * gravity * height;
 	potentialE = ans;
 	return ans;
     }
 
-    public static double setTotEnergy() {
+    public double setTotEnergy() {
 	double ans = mass * gravity * height;
 	totalE = ans;
 	return ans;
     }
 
     // need to set distance and angle
-    public static double setThermEnergy() {
+    public double setThermEnergy() {
 	double ans = coeff * mass * gravity * Math.cos(angle) * dist;
 	thermalE = ans;
 	return ans;
     }
 
-    public static double setVelocity() {
+    public double setVelocity() {
 	double ans = totalE - potentialE - thermalE;
 	ans = Math.sqrt((2 * ans)/mass);
 	velocity = ans;
 	return ans;
     }
 
-    public static double setKinEnergy() {
+    public double setKinEnergy() {
 	double ans = 0.5 * mass * velocity * velocity;
 	kineticE = ans;
 	return ans;
@@ -108,10 +109,10 @@ public class Sim extends JFrame {
 	}
     }
 
-    public static void updateGame(){
-	setMass(Double.parseDouble(m.getText()));
-	setGravity(Double.parseDouble(g.getText()));
-	setCoeff(Double.parseDouble(c.getText()));
+    public void updateGame(){
+	setMass(m.getText());
+	setGravity(g.getText());
+	setCoeff(c.getText());
 	// setHeight = # of pixels;
 	// setAngle = something GUI;
 	// setDist = based on time? GUI
