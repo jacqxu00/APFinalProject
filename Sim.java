@@ -21,7 +21,7 @@ public class Sim extends JFrame {
     private static JTextField g;
     private static JTextField c;
 
-    public Sim() {
+    public Sim() { //change!!
 	mass = 50.0;
 	gravity = 9.81;
 	coeff = 0;
@@ -34,16 +34,25 @@ public class Sim extends JFrame {
 	thermalE = 0;
 	angle = 0;
 	this.setTitle("Conservation of Energy AsimulaXuon");
-	this.setSize(200,800);
+	this.setSize(250,200);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = this.getContentPane();
 	pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
-	m = new JTextField(10);
-	g = new JTextField(10);
-	c = new JTextField(10);
+	JTextField m = new JTextField(10);
+	m.setText("50.0");
+	JTextField g = new JTextField(10);
+	g.setText("9.81");
+	JTextField c = new JTextField(10);
+	c.setText("0.0");
+	JLabel mlab = new JLabel("Mass of Skater");
+	JLabel glab = new JLabel("Gravitational Acceleration");
+	JLabel clab = new JLabel("Coefficient of Friction");
+	pane.add(mlab);
 	pane.add(m);
+	pane.add(glab);
 	pane.add(g);
+	pane.add(clab);
 	pane.add(c);
     }
 
@@ -103,6 +112,8 @@ public class Sim extends JFrame {
     // UPDATE and RUN
 
     public static void main(String[] args){
+	Sim z = new Sim();
+        z.setVisible(true);
 	while(true){
 	    updateGame();
 	}
