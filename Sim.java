@@ -1,4 +1,5 @@
 import java.lang.Math;
+import java.awt.geom.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
@@ -34,7 +35,8 @@ public class Sim extends JFrame {
 	thermalE = 0;
 	angle = 0;
 	this.setTitle("Conservation of Energy AsimulaXuon");
-	this.setSize(250,200);
+	this.setTitle("Conservation of Energy: AsimulaXuon");
+	this.setSize(400,400);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = this.getContentPane();
@@ -132,4 +134,8 @@ public class Sim extends JFrame {
 	setVelocity();
 	setKinEnergy();
     }
+        public void paint(Graphics g) {
+	    QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
+	    ((Graphics2D)g).draw(curve);
+        }
 }
