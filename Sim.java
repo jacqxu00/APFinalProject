@@ -51,12 +51,30 @@ public class Sim extends JFrame {
 	JLabel mlab = new JLabel("Mass of Skater");
 	JLabel glab = new JLabel("Gravitational Acceleration");
 	JLabel clab = new JLabel("Coefficient of Friction");
+	JTabbedPane tabbedPane = new JTabbedPane();
+	JPanel barsPage=new JPanel();
+	JPanel valsPage=new JPanel();
+	tabbedPane.addTab("Bar Graph",barsPage);
+ 	tabbedPane.addTab("Values", valsPage);
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
 	pane.add(g);
 	pane.add(clab);
 	pane.add(c);
+	pane.add(tabbedPane);
+	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
+	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, m, 10, SpringLayout.SOUTH, mlab);
+	layout.putConstraint(SpringLayout.WEST, glab, 10, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, glab, 10, SpringLayout.SOUTH, m);
+	layout.putConstraint(SpringLayout.WEST, g, 10, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, g, 10, SpringLayout.SOUTH, glab);
+	layout.putConstraint(SpringLayout.WEST, clab, 10, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, clab, 10, SpringLayout.SOUTH, g);
+	layout.putConstraint(SpringLayout.WEST, c, 10, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, c, 10, SpringLayout.SOUTH, clab);
 	layout.putConstraint(SpringLayout.WEST, mlab, 610, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, m, 610, SpringLayout.WEST, pane);
@@ -69,6 +87,21 @@ public class Sim extends JFrame {
 	layout.putConstraint(SpringLayout.NORTH, clab, 15, SpringLayout.SOUTH, g);
 	layout.putConstraint(SpringLayout.WEST, c, 610, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, c, 5, SpringLayout.SOUTH, clab);
+	layout.putConstraint(SpringLayout.WEST, tabbedPane, 610, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
+	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
+	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
+	JSplitPane splitPane = new JSplitPane();
+	splitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
+	pane.add(splitPane);
+
+
+	
+
+	//Provide minimum sizes for the two components in the split pane
+	//	Dimension minimumSize = new Dimension(100, 50);
+	//	listScrollPane.setMinimumSize(minimumSize);
+	//	pictureScrollPane.setMinimumSize(minimumSize);
     }
 
     // MATH
