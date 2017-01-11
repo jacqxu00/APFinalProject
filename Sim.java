@@ -34,11 +34,12 @@ public class Sim extends JFrame {
 	thermalE = 0;
 	angle = 0;
 	this.setTitle("Conservation of Energy AsimulaXuon");
-	this.setSize(250,200);
+	this.setSize(600,400);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = this.getContentPane();
-	pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+	SpringLayout layout = new SpringLayout();
+	pane.setLayout(layout);
 	JTextField m = new JTextField(10);
 	m.setText("50.0");
 	JTextField g = new JTextField(10);
@@ -54,6 +55,18 @@ public class Sim extends JFrame {
 	pane.add(g);
 	pane.add(clab);
 	pane.add(c);
+	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
+	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, m, 10, SpringLayout.SOUTH, mlab);
+	layout.putConstraint(SpringLayout.WEST, glab, 10, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, glab, 10, SpringLayout.SOUTH, m);
+	layout.putConstraint(SpringLayout.WEST, g, 10, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, g, 10, SpringLayout.SOUTH, glab);
+	layout.putConstraint(SpringLayout.WEST, clab, 10, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, clab, 10, SpringLayout.SOUTH, g);
+	layout.putConstraint(SpringLayout.WEST, c, 10, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, c, 10, SpringLayout.SOUTH, clab);
     }
 
     // MATH
