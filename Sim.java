@@ -201,9 +201,6 @@ public class Sim extends JFrame {
 	setMass(Double.parseDouble(m.getText()));
 	setGravity(Double.parseDouble(g.getText()));
 	setCoeff(Double.parseDouble(c.getText()));
-	// setHeight();
-	// setAngle();
-	// setDist();
 	setTotEnergy();
 	setPotEnergy();
 	// setThermEnergy();
