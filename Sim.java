@@ -122,10 +122,17 @@ public class Sim extends JFrame {
 
     // GUI TEXTBOXES
 
+<<<<<<< HEAD
     //public void paint(Graphics g) {
     //	QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
     //	((Graphics2D)g).draw(curve);
     //}
+=======
+    public void paint(Graphics g) {
+	QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
+	((Graphics2D)g).draw(curve);
+    }
+>>>>>>> 649cc7998dd9215027a54e1b318e64ae1bf63a1f
     
     // UPDATE and RUN
 
