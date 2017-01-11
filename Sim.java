@@ -35,12 +35,7 @@ public class Sim extends JFrame {
 	thermalE = 0;
 	angle = 0;
 	this.setTitle("Conservation of Energy AsimulaXuon");
-<<<<<<< HEAD
 	this.setSize(600,400);
-=======
-	this.setTitle("Conservation of Energy: AsimulaXuon");
-	this.setSize(400,400);
->>>>>>> master
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = this.getContentPane();
