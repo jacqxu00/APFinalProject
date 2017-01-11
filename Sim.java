@@ -96,10 +96,6 @@ public class Sim extends JFrame {
 
     // MATH
 
-    public static void setHeight(double h) {
-	height = h;
-    }
-
     public static void setMass(double m) {
 	mass = m;
 	
@@ -146,6 +142,26 @@ public class Sim extends JFrame {
 	return ans;
     }
 
+    /** ----------------NEED TO WRITE THIS---------------
+    public static double setHeight() {
+	double ans = 520 - position.y;
+	height = ans;
+	return ans;
+    }
+
+    public static double setAngle(Pvector old) {
+	double ans = atan((old.y-position.y)/(old.x-position.x));
+	angle = ans;
+	return ans;
+    }
+
+    public static double setDist(Pvector old) {
+	double ans = position.dist(old);
+	dist += ans;
+	return ans;
+    }
+    **/
+
     // GUI
 
     public void paint(Graphics g) {
@@ -168,17 +184,26 @@ public class Sim extends JFrame {
 	Sim z = new Sim();
         z.setVisible(true);
 	while(true){
+	    //Pvector temp = (position.x,position.y);
+	    //run();
+	    //setAngle(temp);
+	    //setDist(temp);
 	    updateGame();
 	}
     }
+
+    /** ----------------NEED TO WRITE THIS---------------
+    public static void run(){
+    }
+    **/
 
     public static void updateGame(){
 	setMass(Double.parseDouble(m.getText()));
 	setGravity(Double.parseDouble(g.getText()));
 	setCoeff(Double.parseDouble(c.getText()));
-	// setHeight = # of pixels;
-	// setAngle = something GUI;
-	// setDist = based on time? GUI
+	// setHeight();
+	// setAngle();
+	// setDist();
 	setTotEnergy();
 	setPotEnergy();
 	// setThermEnergy();
