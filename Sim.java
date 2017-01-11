@@ -214,9 +214,6 @@ public class Sim extends JFrame implements ActionListener{
 	setMass(Double.parseDouble(m.getText()));
 	setGravity(Double.parseDouble(g.getText()));
 	setCoeff(Double.parseDouble(c.getText()));
-	// setHeight();
-	// setAngle();
-	// setDist();
 	setTotEnergy();
 	setPotEnergy();
 	// setThermEnergy();
