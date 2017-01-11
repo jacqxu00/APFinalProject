@@ -36,7 +36,6 @@ public class Sim extends JFrame implements ActionListener{
 	angle = 0;
 	setTitle("Conservation of Energy: AsimulaXuon");
         setSize(1000,600);
-	setVisible(true);
 	//setLocation(100,100);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	Container pane = getContentPane();
@@ -59,10 +58,7 @@ public class Sim extends JFrame implements ActionListener{
 	JPanel valsPage=new JPanel();
 	tabbedPane.addTab("Bar Graph",barsPage);
  	tabbedPane.addTab("Values", valsPage);
-<<<<<<< HEAD
 	pane.add(move);
-=======
->>>>>>> 741d28ee6c5baa9c0f4ee30fb8113573ce606b53
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
@@ -70,11 +66,8 @@ public class Sim extends JFrame implements ActionListener{
 	pane.add(clab);
 	pane.add(c);
 	pane.add(tabbedPane);
-<<<<<<< HEAD
-	layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, move, 300, SpringLayout.WEST, pane);
-=======
->>>>>>> 741d28ee6c5baa9c0f4ee30fb8113573ce606b53
+	layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
@@ -99,7 +92,6 @@ public class Sim extends JFrame implements ActionListener{
 	layout.putConstraint(SpringLayout.NORTH, clab, 15, SpringLayout.SOUTH, g);
 	layout.putConstraint(SpringLayout.WEST, c, 610, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, c, 5, SpringLayout.SOUTH, clab);
-<<<<<<< HEAD
 	layout.putConstraint(SpringLayout.WEST, tabbedPane, 610, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
@@ -114,12 +106,7 @@ public class Sim extends JFrame implements ActionListener{
 	if(event.equals("NotByte")){
 	    
 	}
-=======
-	layout.putConstraint(SpringLayout.WEST, tabbedPane, 605, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
-	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
-	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
->>>>>>> 741d28ee6c5baa9c0f4ee30fb8113573ce606b53
+	
     }
 
     // MATH
