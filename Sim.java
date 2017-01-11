@@ -2,6 +2,7 @@ import java.lang.Math;
 import java.awt.geom.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.JSplitPane;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -34,11 +35,12 @@ public class Sim extends JFrame {
 	potentialE = 0;
 	thermalE = 0;
 	angle = 0;
-	this.setTitle("Conservation of Energy: AsimulaXuon");
-        this.setSize(900,600);
-	this.setLocation(100,100);
-	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-	pane = this.getContentPane();
+	setTitle("Conservation of Energy: AsimulaXuon");
+        setSize(1000,800);
+	setVisible(true);
+	//setLocation(100,100);
+	setDefaultCloseOperation(EXIT_ON_CLOSE);
+	Container pane = getContentPane();
 	SpringLayout layout = new SpringLayout();
 	pane.setLayout(layout);
 	JTextField m = new JTextField(10);
@@ -111,6 +113,8 @@ public class Sim extends JFrame {
 
     public static void setMass(double m) {
 	mass = m;
+	
+		
     }
 
     public static void setGravity(double g) {
@@ -155,10 +159,10 @@ public class Sim extends JFrame {
 
     // GUI TEXTBOXES
 
-    //public void paint(Graphics g) {
-    //	QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
-    //	((Graphics2D)g).draw(curve);
-    //}
+    public void paint(Graphics g) {
+   	QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
+    	((Graphics2D)g).draw(curve);
+    }
     
     // UPDATE and RUN
 
