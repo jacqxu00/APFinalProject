@@ -34,13 +34,13 @@ public class Sim extends JFrame {
 	potentialE = 0;
 	thermalE = 0;
 	angle = 0;
-	this.setTitle("Conservation of Energy AsimulaXuon");
 	this.setTitle("Conservation of Energy: AsimulaXuon");
-	this.setSize(400,400);
+        this.setSize(900,600);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = this.getContentPane();
-	pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+	SpringLayout layout = new SpringLayout();
+	pane.setLayout(layout);
 	JTextField m = new JTextField(10);
 	m.setText("50.0");
 	JTextField g = new JTextField(10);
@@ -56,6 +56,18 @@ public class Sim extends JFrame {
 	pane.add(g);
 	pane.add(clab);
 	pane.add(c);
+	layout.putConstraint(SpringLayout.WEST, mlab, 610, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
+	layout.putConstraint(SpringLayout.WEST, m, 610, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, m, 5, SpringLayout.SOUTH, mlab);
+	layout.putConstraint(SpringLayout.WEST, glab, 610, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, glab, 15, SpringLayout.SOUTH, m);
+	layout.putConstraint(SpringLayout.WEST, g, 610, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, g, 5, SpringLayout.SOUTH, glab);
+	layout.putConstraint(SpringLayout.WEST, clab, 610, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, clab, 15, SpringLayout.SOUTH, g);
+	layout.putConstraint(SpringLayout.WEST, c, 610, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, c, 5, SpringLayout.SOUTH, clab);
     }
 
     // MATH
@@ -110,6 +122,10 @@ public class Sim extends JFrame {
 
     // GUI TEXTBOXES
 
+    //public void paint(Graphics g) {
+    //	QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
+    //	((Graphics2D)g).draw(curve);
+    //}
     
     // UPDATE and RUN
 
@@ -134,8 +150,5 @@ public class Sim extends JFrame {
 	setVelocity();
 	setKinEnergy();
     }
-        public void paint(Graphics g) {
-	    QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
-	    ((Graphics2D)g).draw(curve);
-        }
+    
 }
