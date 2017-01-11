@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Sim extends JFrame {
+public class Sim extends JFrame implements ActionListener{
     private static double mass;
     private static double height;
     private static double gravity;
@@ -42,6 +42,9 @@ public class Sim extends JFrame {
 	Container pane = getContentPane();
 	SpringLayout layout = new SpringLayout();
 	pane.setLayout(layout);
+	JButton move  = new JButton("Go");
+	move.addActionListener(this);
+	move.setActionCommand("Go");
 	JTextField m = new JTextField(10);
 	m.setText("50.0");
 	JTextField g = new JTextField(10);
@@ -56,6 +59,7 @@ public class Sim extends JFrame {
 	JPanel valsPage=new JPanel();
 	tabbedPane.addTab("Bar Graph",barsPage);
  	tabbedPane.addTab("Values", valsPage);
+	pane.add(move);
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
@@ -63,6 +67,8 @@ public class Sim extends JFrame {
 	pane.add(clab);
 	pane.add(c);
 	pane.add(tabbedPane);
+	layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, move, 300, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
@@ -91,17 +97,16 @@ public class Sim extends JFrame {
 	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
-	JSplitPane splitPane = new JSplitPane();
-	splitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
-	pane.add(splitPane);
+    }
 
-
-	
-
-	//Provide minimum sizes for the two components in the split pane
-	//	Dimension minimumSize = new Dimension(100, 50);
-	//	listScrollPane.setMinimumSize(minimumSize);
-	//	pictureScrollPane.setMinimumSize(minimumSize);
+    public void actionPerformed(ActionEvent e){
+	String event = e.getActionCommand();
+	if(event.equals("Byte")){
+	    
+	}
+	if(event.equals("NotByte")){
+	    
+	}
     }
 
     // MATH
@@ -111,9 +116,7 @@ public class Sim extends JFrame {
     }
 
     public static void setMass(double m) {
-	mass = m;
-	
-		
+	mass = m;		
     }
 
     public static void setGravity(double g) {
