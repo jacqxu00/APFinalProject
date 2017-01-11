@@ -35,7 +35,7 @@ public class Sim extends JFrame implements ActionListener{
 	thermalE = 0;
 	angle = 0;
 	setTitle("Conservation of Energy: AsimulaXuon");
-        setSize(1000,800);
+        setSize(1000,600);
 	setVisible(true);
 	//setLocation(100,100);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -59,7 +59,10 @@ public class Sim extends JFrame implements ActionListener{
 	JPanel valsPage=new JPanel();
 	tabbedPane.addTab("Bar Graph",barsPage);
  	tabbedPane.addTab("Values", valsPage);
+<<<<<<< HEAD
 	pane.add(move);
+=======
+>>>>>>> 741d28ee6c5baa9c0f4ee30fb8113573ce606b53
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
@@ -67,8 +70,11 @@ public class Sim extends JFrame implements ActionListener{
 	pane.add(clab);
 	pane.add(c);
 	pane.add(tabbedPane);
+<<<<<<< HEAD
 	layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, move, 300, SpringLayout.WEST, pane);
+=======
+>>>>>>> 741d28ee6c5baa9c0f4ee30fb8113573ce606b53
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
@@ -93,6 +99,7 @@ public class Sim extends JFrame implements ActionListener{
 	layout.putConstraint(SpringLayout.NORTH, clab, 15, SpringLayout.SOUTH, g);
 	layout.putConstraint(SpringLayout.WEST, c, 610, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, c, 5, SpringLayout.SOUTH, clab);
+<<<<<<< HEAD
 	layout.putConstraint(SpringLayout.WEST, tabbedPane, 610, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
@@ -107,13 +114,15 @@ public class Sim extends JFrame implements ActionListener{
 	if(event.equals("NotByte")){
 	    
 	}
+=======
+	layout.putConstraint(SpringLayout.WEST, tabbedPane, 605, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
+	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
+	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
+>>>>>>> 741d28ee6c5baa9c0f4ee30fb8113573ce606b53
     }
 
     // MATH
-
-    public static void setHeight(double h) {
-	height = h;
-    }
 
     public static void setMass(double m) {
 	mass = m;		
@@ -159,11 +168,40 @@ public class Sim extends JFrame implements ActionListener{
 	return ans;
     }
 
-    // GUI TEXTBOXES
+    /** ----------------NEED TO WRITE THIS---------------
+    public static double setHeight() {
+	double ans = 520 - position.y;
+	height = ans;
+	return ans;
+    }
+
+    public static double setAngle(Pvector old) {
+	double ans = atan((old.y-position.y)/(old.x-position.x));
+	angle = ans;
+	return ans;
+    }
+
+    public static double setDist(Pvector old) {
+	double ans = position.dist(old);
+	dist += ans;
+	return ans;
+    }
+    **/
+
+    // GUI
 
     public void paint(Graphics g) {
-   	QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
+	Graphics2D gsky = (Graphics2D) g;
+	gsky.setColor(new Color(200,200,225));
+	gsky.drawRect(0,0,600,600);
+	gsky.fillRect(0,0,600,600);
+	Graphics2D gground = (Graphics2D) g;
+	gground.setColor(new Color(000,075,025));
+	gground.drawRect(0,520,600,80);
+	gground.fillRect(0,520,600,80);
+	QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
     	((Graphics2D)g).draw(curve);
+	
     }
     
     // UPDATE and RUN
@@ -172,17 +210,26 @@ public class Sim extends JFrame implements ActionListener{
 	Sim z = new Sim();
         z.setVisible(true);
 	while(true){
+	    //Pvector temp = (position.x,position.y);
+	    //run();
+	    //setAngle(temp);
+	    //setDist(temp);
 	    updateGame();
 	}
     }
+
+    /** ----------------NEED TO WRITE THIS---------------
+    public static void run(){
+    }
+    **/
 
     public static void updateGame(){
 	setMass(Double.parseDouble(m.getText()));
 	setGravity(Double.parseDouble(g.getText()));
 	setCoeff(Double.parseDouble(c.getText()));
-	// setHeight = # of pixels;
-	// setAngle = something GUI;
-	// setDist = based on time? GUI
+	// setHeight();
+	// setAngle();
+	// setDist();
 	setTotEnergy();
 	setPotEnergy();
 	// setThermEnergy();
