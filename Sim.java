@@ -34,8 +34,8 @@ public class Sim extends JFrame {
 	potentialE = 0;
 	thermalE = 0;
 	angle = 0;
-	this.setTitle("Conservation of Energy AsimulaXuon");
-	this.setSize(600,400);
+	this.setTitle("Conservation of Energy: AsimulaXuon");
+        this.setSize(900,600);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = this.getContentPane();
@@ -68,6 +68,28 @@ public class Sim extends JFrame {
 	layout.putConstraint(SpringLayout.NORTH, clab, 10, SpringLayout.SOUTH, g);
 	layout.putConstraint(SpringLayout.WEST, c, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, c, 10, SpringLayout.SOUTH, clab);
+	layout.putConstraint(SpringLayout.WEST, mlab, 610, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
+	layout.putConstraint(SpringLayout.WEST, m, 610, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, m, 5, SpringLayout.SOUTH, mlab);
+	layout.putConstraint(SpringLayout.WEST, glab, 610, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, glab, 15, SpringLayout.SOUTH, m);
+	layout.putConstraint(SpringLayout.WEST, g, 610, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, g, 5, SpringLayout.SOUTH, glab);
+	layout.putConstraint(SpringLayout.WEST, clab, 610, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, clab, 15, SpringLayout.SOUTH, g);
+	layout.putConstraint(SpringLayout.WEST, c, 610, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, c, 5, SpringLayout.SOUTH, clab);
+	JSplitPane splitPane = new JSplitPane();
+	splitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
+	pane.add(splitPane);
+	pane.setVisible(true);
+
+
+	//Provide minimum sizes for the two components in the split pane
+	//	Dimension minimumSize = new Dimension(100, 50);
+	//	listScrollPane.setMinimumSize(minimumSize);
+	//	pictureScrollPane.setMinimumSize(minimumSize);
     }
 
     // MATH
@@ -122,10 +144,10 @@ public class Sim extends JFrame {
 
     // GUI TEXTBOXES
 
-    public void paint(Graphics g) {
-	QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
-	((Graphics2D)g).draw(curve);
-    }
+    //public void paint(Graphics g) {
+    //	QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
+    //	((Graphics2D)g).draw(curve);
+    //}
     
     // UPDATE and RUN
 
