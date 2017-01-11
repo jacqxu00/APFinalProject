@@ -36,7 +36,7 @@ public class Sim extends JFrame {
 	thermalE = 0;
 	angle = 0;
 	setTitle("Conservation of Energy: AsimulaXuon");
-        setSize(1000,800);
+        setSize(1000,600);
 	setVisible(true);
 	//setLocation(100,100);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -88,21 +88,10 @@ public class Sim extends JFrame {
 	layout.putConstraint(SpringLayout.NORTH, clab, 15, SpringLayout.SOUTH, g);
 	layout.putConstraint(SpringLayout.WEST, c, 610, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, c, 5, SpringLayout.SOUTH, clab);
-	layout.putConstraint(SpringLayout.WEST, tabbedPane, 610, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.WEST, tabbedPane, 605, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
-	JSplitPane splitPane = new JSplitPane();
-	splitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
-	pane.add(splitPane);
-
-
-	
-
-	//Provide minimum sizes for the two components in the split pane
-	//	Dimension minimumSize = new Dimension(100, 50);
-	//	listScrollPane.setMinimumSize(minimumSize);
-	//	pictureScrollPane.setMinimumSize(minimumSize);
     }
 
     // MATH
@@ -157,11 +146,20 @@ public class Sim extends JFrame {
 	return ans;
     }
 
-    // GUI TEXTBOXES
+    // GUI
 
     public void paint(Graphics g) {
-   	QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
+	Graphics2D gsky = (Graphics2D) g;
+	gsky.setColor(new Color(200,200,225));
+	gsky.drawRect(0,0,600,600);
+	gsky.fillRect(0,0,600,600);
+	Graphics2D gground = (Graphics2D) g;
+	gground.setColor(new Color(000,075,025));
+	gground.drawRect(0,520,600,80);
+	gground.fillRect(0,520,600,80);
+	QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
     	((Graphics2D)g).draw(curve);
+	
     }
     
     // UPDATE and RUN
