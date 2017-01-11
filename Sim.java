@@ -2,11 +2,10 @@ import java.lang.Math;
 import java.awt.geom.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.JSplitPane;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Sim extends JFrame {
+public class Sim extends JFrame implements ActionListener{
     private static double mass;
     private static double height;
     private static double gravity;
@@ -43,6 +42,9 @@ public class Sim extends JFrame {
 	Container pane = getContentPane();
 	SpringLayout layout = new SpringLayout();
 	pane.setLayout(layout);
+	JButton move  = new JButton("Go");
+	move.addActionListener(this);
+	move.setActionCommand("Go");
 	JTextField m = new JTextField(10);
 	m.setText("50.0");
 	JTextField g = new JTextField(10);
@@ -57,6 +59,10 @@ public class Sim extends JFrame {
 	JPanel valsPage=new JPanel();
 	tabbedPane.addTab("Bar Graph",barsPage);
  	tabbedPane.addTab("Values", valsPage);
+<<<<<<< HEAD
+	pane.add(move);
+=======
+>>>>>>> 741d28ee6c5baa9c0f4ee30fb8113573ce606b53
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
@@ -64,6 +70,11 @@ public class Sim extends JFrame {
 	pane.add(clab);
 	pane.add(c);
 	pane.add(tabbedPane);
+<<<<<<< HEAD
+	layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, move, 300, SpringLayout.WEST, pane);
+=======
+>>>>>>> 741d28ee6c5baa9c0f4ee30fb8113573ce606b53
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
@@ -88,18 +99,33 @@ public class Sim extends JFrame {
 	layout.putConstraint(SpringLayout.NORTH, clab, 15, SpringLayout.SOUTH, g);
 	layout.putConstraint(SpringLayout.WEST, c, 610, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, c, 5, SpringLayout.SOUTH, clab);
-	layout.putConstraint(SpringLayout.WEST, tabbedPane, 605, SpringLayout.WEST, pane);
+<<<<<<< HEAD
+	layout.putConstraint(SpringLayout.WEST, tabbedPane, 610, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
     }
 
+    public void actionPerformed(ActionEvent e){
+	String event = e.getActionCommand();
+	if(event.equals("Byte")){
+	    
+	}
+	if(event.equals("NotByte")){
+	    
+	}
+=======
+	layout.putConstraint(SpringLayout.WEST, tabbedPane, 605, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
+	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
+	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
+>>>>>>> 741d28ee6c5baa9c0f4ee30fb8113573ce606b53
+    }
+
     // MATH
 
     public static void setMass(double m) {
-	mass = m;
-	
-		
+	mass = m;		
     }
 
     public static void setGravity(double g) {
