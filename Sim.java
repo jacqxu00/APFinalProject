@@ -68,6 +68,17 @@ public class Sim extends JFrame {
 	layout.putConstraint(SpringLayout.NORTH, clab, 15, SpringLayout.SOUTH, g);
 	layout.putConstraint(SpringLayout.WEST, c, 610, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, c, 5, SpringLayout.SOUTH, clab);
+
+	JSplitPane splitPane = new JSplitPane();
+	splitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
+	pane.add(splitPane);
+	pane.setVisible(true);
+
+
+	//Provide minimum sizes for the two components in the split pane
+	//	Dimension minimumSize = new Dimension(100, 50);
+	//	listScrollPane.setMinimumSize(minimumSize);
+	//	pictureScrollPane.setMinimumSize(minimumSize);
     }
 
     // MATH
@@ -122,17 +133,10 @@ public class Sim extends JFrame {
 
     // GUI TEXTBOXES
 
-<<<<<<< HEAD
     //public void paint(Graphics g) {
     //	QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
     //	((Graphics2D)g).draw(curve);
     //}
-=======
-    public void paint(Graphics g) {
-	QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
-	((Graphics2D)g).draw(curve);
-    }
->>>>>>> 649cc7998dd9215027a54e1b318e64ae1bf63a1f
     
     // UPDATE and RUN
 
