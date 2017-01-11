@@ -110,6 +110,10 @@ public class Sim extends JFrame {
 
     // GUI TEXTBOXES
 
+    public void paint(Graphics g) {
+	QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
+	((Graphics2D)g).draw(curve);
+    }
     
     // UPDATE and RUN
 
@@ -134,8 +138,5 @@ public class Sim extends JFrame {
 	setVelocity();
 	setKinEnergy();
     }
-        public void paint(Graphics g) {
-	    QuadCurve2D.Double curve = new QuadCurve2D.Double(20,70,200,550,380,70);
-	    ((Graphics2D)g).draw(curve);
-        }
+    
 }
