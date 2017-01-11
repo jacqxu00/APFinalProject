@@ -2,7 +2,6 @@ import java.lang.Math;
 import java.awt.geom.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.JSplitPane;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -35,7 +34,7 @@ public class Sim extends JFrame {
 	potentialE = 0;
 	thermalE = 0;
 	angle = 0;
-	setTitle("Conservation of Energy: AsimulaXuon");
+	setTitle("Conservation of Energy: A-simulaXuon");
         setSize(1000,800);
 	setVisible(true);
 	//setLocation(100,100);
@@ -79,9 +78,7 @@ public class Sim extends JFrame {
     }
 
     public static void setMass(double m) {
-	mass = m;
-	
-		
+	mass = m;		
     }
 
     public static void setGravity(double g) {
