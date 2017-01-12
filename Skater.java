@@ -164,7 +164,7 @@ public class Skater{
     }
 
     public void setKinEnergy() {
-        double ans = this.totalE - this.PotentialE - this.ThermalE;
+        double ans = this.totalE - this.potentialE - this.thermalE;
 	this.kineticE = ans;
     }
     

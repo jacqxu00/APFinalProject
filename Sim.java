@@ -18,6 +18,7 @@ public class Sim extends JFrame implements ActionListener {
     private JTabbedPane tabbedPane;
     private JPanel barsPage;
     private JPanel valsPage;
+    private Skater y = new Skater();
 
     public Sim() { //change!!
 	setTitle("Conservation of Energy: AsimulaXuon");
@@ -110,7 +111,7 @@ public class Sim extends JFrame implements ActionListener {
     	((Graphics2D)g).draw(curve);
     }
 
-    public static void updateGame(){
+    public void updateGame(){
 	int delay = 1000; //in milliseconds
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
@@ -120,11 +121,12 @@ public class Sim extends JFrame implements ActionListener {
 		    y.setGravity(grav);
 		    double coeff = Double.parseDouble(c.getText());
 		    y.setCoeff(coeff);
+		    Vector<Double> temp = new Vector<Double>();
 		    //movement
 		    y.setHeight();
 		    y.setPotEnergy();
-		    y.setDist();
-		    y.setAngle();
+		    y.setDist(temp);
+		    y.setAngle(temp);
 		    y.setThermEnergy();
 		    y.setKinEnergy();
 		    y.setVelocity();
@@ -133,10 +135,9 @@ public class Sim extends JFrame implements ActionListener {
 	new Timer(delay, taskPerformer).start();
     }
 
-    public static void main(String[] args){
+    public void main(String[] args){
 	Sim z = new Sim();
         z.setVisible(true);
-	Skater y = new Skater();
 	while(true){
 	   updateGame();
 	}
