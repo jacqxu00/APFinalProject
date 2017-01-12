@@ -81,14 +81,6 @@ public class Sim extends JFrame{
 	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
-<<<<<<< HEAD
-<<<<<<< HEAD
-    }
-=======
->>>>>>> cfacfd236c78e6283aae818d36cfa24e971e90e0
-=======
-    }
->>>>>>> origin
 
 	public void actionPerformed(ActionEvent e){
 	    String event = e.getActionCommand();
@@ -99,16 +91,7 @@ public class Sim extends JFrame{
 	    
 	    }
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-    }
 
-=======
-   
->>>>>>> cfacfd236c78e6283aae818d36cfa24e971e90e0
-=======
-    
->>>>>>> origin
     public void paint(Graphics g) {
 	Graphics2D gsky = (Graphics2D) g;
 	gsky.setColor(new Color(200,200,225));
@@ -121,9 +104,6 @@ public class Sim extends JFrame{
 	QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
     	((Graphics2D)g).draw(curve);
     }
-
-    //  public void paint2(Graphics g, ){
-    // }
 
     public static void main(String[] args){
 	Sim z = new Sim();
@@ -143,7 +123,7 @@ public class Sim extends JFrame{
 	int delay = 1000; //in milliseconds
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
-		    //paint2, with changing position/velocity for skater
+		    
 		}
 	    };
 	new Timer(delay, taskPerformer).start();
