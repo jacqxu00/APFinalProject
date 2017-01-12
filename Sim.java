@@ -44,8 +44,8 @@ public class Sim extends JFrame{
 	g.setText("9.81");
 	c = new JTextField(10);
 	c.setText("0.0");
-        mlab = new JLabel("Mass of Skater (kg)");
-	glab = new JLabel("Gravitational Acceleration (m/s^2)");
+        mlab = new JLabel("Mass of Skater");
+	glab = new JLabel("Gravitational Acceleration");
         clab = new JLabel("Coefficient of Friction");
 	tabbedPane = new JTabbedPane();
         barsPage=new JPanel();
@@ -139,7 +139,7 @@ public class Sim extends JFrame{
 		    double coeff = Double.parseDouble(c.getText());
 		    y.setCoeff(coeff);
 		    Vector<Double> temp = new Vector<Double>();
-		    y.paint3((Graphics)p);
+		    repaint();
 		    y.setHeight();
 		    y.setPotEnergy();
 		    y.setDist(temp);
