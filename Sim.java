@@ -46,15 +46,12 @@ public class Sim extends JFrame{
 	pane.add(clab);
 	pane.add(c);
 	pane.add(tabbedPane);
-<<<<<<< HEAD
 	layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, move, 300, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);
-=======
 	/*layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
 	  layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);*/
->>>>>>> master
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
@@ -84,7 +81,6 @@ public class Sim extends JFrame{
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
     }
-<<<<<<< HEAD
 
     public void actionPerformed(ActionEvent e){
 	String event = e.getActionCommand();
@@ -95,18 +91,6 @@ public class Sim extends JFrame{
 	    
 	}
     }
-
-    // MATH
-
-    public static void setMass(double m) {
-	mass = m;		
-    }
-
-    public static void setGravity(double g) {
-	gravity = g;
-    }
-=======
->>>>>>> master
    
 
     public void paint(Graphics g) {
