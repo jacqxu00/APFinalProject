@@ -21,9 +21,10 @@ public class Sim extends JFrame{
     private JTabbedPane tabbedPane;
     private JPanel barsPage;
     private JPanel valsPage;
-    private Skater y = new Skater();
+    private Skater y = new Skater(41.0,186.0,11.0);
     private String imgSkaterJPG = "images/skater.jpg"; 
     private Image img;  // this is a BufferedImage object
+    private Skater circle = new Skater(40.0,185.0,10.0);
     
 
     public Sim() { //change!!
@@ -92,6 +93,9 @@ public class Sim extends JFrame{
 	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
+
+	circle = new Skater(10, 15, 5);
+	circle.setMotion(3.0, 6.0);
     }
 
     public void paint(Graphics g) {
@@ -105,9 +109,16 @@ public class Sim extends JFrame{
 	gground.fillRect(0,520,600,80);
 	QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
     	((Graphics2D)g).draw(curve);
-	Graphics2D circle = (Graphics2D) g;
+	/*Graphics2D circle = (Graphics2D) g;
 	circle.drawOval((int)(y.getPosX()+y.getVelX()/100),(int)(y.getPosY()+y.getVelY()/100),10,10);
-	y.setPosition(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100); 
+	y.setPosition(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100); */
+	circle.paint(g);
+	//if((aball.x() < 0) || (aball.x() > framewidth))
+	//  aball.setMotion(-aball.xMotion(), aball.yMotion());
+	//if((aball.yMotion() < 0) || (aball.yMotion() > frameheight))
+	//  aball.setMotion(aball.xMotion(),-aball.yMotion());
+
+    //redraw  the frame
 
     }
 
@@ -130,7 +141,7 @@ public class Sim extends JFrame{
     
 
     public void updateGame(){
-	int delay = 1000;
+	int delay = 1000; 
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
 		    double mass = Double.parseDouble(m.getText());
@@ -143,6 +154,7 @@ public class Sim extends JFrame{
 		    temp.add(0.0); //values?
 		    temp.add(0.0); //values?
 		    repaint();
+		    circle.moveTo(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100);
 		    y.setPosition(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100); 
 		    y.setHeight();
 		    y.setPotEnergy();
