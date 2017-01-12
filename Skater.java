@@ -30,10 +30,10 @@ public class Skater{
         thermalE = 0;
         setTotEnergy();
         setKinEnergy();
+	angle = Math.PI/9;
 	double vel = Math.sqrt((2 * this.kineticE)/this.mass);
         velocity.add(Math.cos(angle) * vel);
 	velocity.add(Math.sin(angle) * vel);
-	angle = Math.PI/9;
     }
 
     
@@ -133,7 +133,7 @@ public class Skater{
     public void setVelocity() {
 	double vel = Math.sqrt((2 * this.kineticE)/this.mass);
 	this.velocity.set(0,Math.cos(angle) * vel);
-	this.velocity.set(0,Math.sin(angle) * vel);
+	this.velocity.set(1,Math.sin(angle) * vel); //1?
     }
 
     public double getPotEnergy() {
@@ -186,14 +186,13 @@ public class Skater{
 	g.drawImage(img, 40, 190, null);
 	this.position.set(0,this.position.get(0)+this.velocity.get(0)/100);
 	this.position.set(0,this.position.get(1)+this.velocity.get(1)/100);
-	}*/
-
-    public void paint (Graphics g){
+	}
+    public void paint3 (Graphics g){
 	Graphics2D circle = (Graphics2D) g;
 	circle.drawOval(40,190,10,10);
 	this.position.set(0,this.position.get(0)+this.velocity.get(0)/100);
 	this.position.set(0,this.position.get(1)+this.velocity.get(1)/100);
-    }
+	}*/
     
     public static void main (String[] args){
 	Skater skater = new Skater();
