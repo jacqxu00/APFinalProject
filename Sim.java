@@ -4,6 +4,7 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.Timer;
 
 public class Sim extends JFrame{
 
@@ -75,8 +76,7 @@ public class Sim extends JFrame{
 	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
-    }
-   
+    }  
 
     public void paint(Graphics g) {
 	Graphics2D gsky = (Graphics2D) g;
@@ -90,8 +90,6 @@ public class Sim extends JFrame{
 	QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
     	((Graphics2D)g).draw(curve);
     }
-    
-    // UPDATE and RUN
 
     public static void main(String[] args){
 	Sim z = new Sim();
@@ -101,16 +99,18 @@ public class Sim extends JFrame{
 	    //run();
 	    //setAngle(temp);
 	    //setDist(temp);
-	    //  updateGame();
+	   updateGame();
 	}
 	//new skater
     }
 
-    /** ----------------NEED TO WRITE THIS---------------
-    public static void run(){
+    public static void updateGame(){
+	int delay = 1000; //in milliseconds
+	ActionListener taskPerformer = new ActionListener() {
+		public void actionPerformed(ActionEvent evt) {
+		    
+		}
+	    };
+	new Timer(delay, taskPerformer).start();
     }
-    **/
-
-    
-    
 }

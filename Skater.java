@@ -1,5 +1,3 @@
-import java.awt.Graphics;
-
 public class Skater{
     private double mass;
     private double height;
