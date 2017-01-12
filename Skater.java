@@ -17,8 +17,8 @@ public class Skater{
     private double potentialE;
     private double thermalE;
     private double angle;
-    private Vector<Double> position = new Vector<Double>();
-    private Vector<Double> velocity = new Vector<Double>();
+    private Vector<Double> position = new Vector<Double>(2);
+    private Vector<Double> velocity = new Vector<Double>(2);
     private String imgSkaterJPG = "images/skater.jpg"; 
     private Image img;  // this is a BufferedImage object
 
@@ -34,7 +34,9 @@ public class Skater{
         thermalE = 0;
         setTotEnergy();
         setKinEnergy();
-	setVelocity();
+	double vel = Math.sqrt((2 * this.kineticE)/this.mass);
+        velocity.add(Math.cos(angle) * vel);
+	velocity.add(Math.sin(angle) * vel);
 	angle = Math.PI/9;
     }
 
@@ -135,7 +137,7 @@ public class Skater{
     public void setVelocity() {
 	double vel = Math.sqrt((2 * this.kineticE)/this.mass);
 	this.velocity.set(0,Math.cos(angle) * vel);
-	this.velocity.set(1,Math.sin(angle) * vel);
+	this.velocity.set(0,Math.sin(angle) * vel);
     }
 
     public double getPotEnergy() {
