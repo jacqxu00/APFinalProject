@@ -5,35 +5,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Sim extends JFrame implements ActionListener{
-    private static double mass;
-    private static double height;
-    private static double gravity;
-    private static double coeff;
-    private static double velocity;
-    private static double dist;
-    private static double totalE;
-    private static double kineticE;
-    private static double potentialE;
-    private static double thermalE;
-    private static double angle;
+public class Sim extends JFrame{
+
     private static Container pane;
     private static JTextField m;
     private static JTextField g;
     private static JTextField c;
 
     public Sim() { //change!!
-	mass = 50.0;
-	gravity = 9.81;
-	coeff = 0;
-	height = 0;
-	velocity = 0;
-	dist = 0;
-	totalE = 0;
-	kineticE = 0;
-	potentialE = 0;
-	thermalE = 0;
-	angle = 0;
 	setTitle("Conservation of Energy: AsimulaXuon");
         setSize(1000,600);
 	//setLocation(100,100);
@@ -41,9 +20,9 @@ public class Sim extends JFrame implements ActionListener{
 	Container pane = getContentPane();
 	SpringLayout layout = new SpringLayout();
 	pane.setLayout(layout);
-	JButton move  = new JButton("Go");
+	/*JButton move  = new JButton("Go");
 	move.addActionListener(this);
-	move.setActionCommand("Go");
+	move.setActionCommand("Go");*/
 	JTextField m = new JTextField(10);
 	m.setText("50.0");
 	JTextField g = new JTextField(10);
@@ -58,7 +37,7 @@ public class Sim extends JFrame implements ActionListener{
 	JPanel valsPage=new JPanel();
 	tabbedPane.addTab("Bar Graph",barsPage);
  	tabbedPane.addTab("Values", valsPage);
-	pane.add(move);
+	//pane.add(move);
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
@@ -66,8 +45,8 @@ public class Sim extends JFrame implements ActionListener{
 	pane.add(clab);
 	pane.add(c);
 	pane.add(tabbedPane);
-	layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);
+	/*layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
+	  layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);*/
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
@@ -97,85 +76,7 @@ public class Sim extends JFrame implements ActionListener{
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
     }
-
-    public void actionPerformed(ActionEvent e){
-	String event = e.getActionCommand();
-	if(event.equals("Byte")){
-	    
-	}
-	if(event.equals("NotByte")){
-	    
-	}
-	
-    }
-
-    // MATH
-
-    public static void setMass(double m) {
-	mass = m;		
-    }
-
-    public static void setGravity(double g) {
-	gravity = g;
-    }
    
-    public static void setCoeff(double c) {
-	coeff = c;
-    }
-
-    public static double setPotEnergy() {
-	double ans = mass * gravity * height;
-	potentialE = ans;
-	return ans;
-    }
-
-    public static double setTotEnergy() {
-	double ans = mass * gravity * height;
-	totalE = ans;
-	return ans;
-    }
-
-    // need to set distance and angle
-    public static double setThermEnergy() {
-	double ans = coeff * mass * gravity * Math.cos(angle) * dist;
-	thermalE = ans;
-	return ans;
-    }
-
-    public static double setVelocity() {
-	double ans = totalE - potentialE - thermalE;
-	ans = Math.sqrt((2 * ans)/mass);
-	velocity = ans;
-	return ans;
-    }
-
-    public static double setKinEnergy() {
-	double ans = 0.5 * mass * velocity * velocity;
-	kineticE = ans;
-	return ans;
-    }
-
-    /** ----------------NEED TO WRITE THIS---------------
-    public static double setHeight() {
-	double ans = 520 - position.y;
-	height = ans;
-	return ans;
-    }
-
-    public static double setAngle(Pvector old) {
-	double ans = atan((old.y-position.y)/(old.x-position.x));
-	angle = ans;
-	return ans;
-    }
-
-    public static double setDist(Pvector old) {
-	double ans = position.dist(old);
-	dist += ans;
-	return ans;
-    }
-    **/
-
-    // GUI
 
     public void paint(Graphics g) {
 	Graphics2D gsky = (Graphics2D) g;
@@ -188,7 +89,6 @@ public class Sim extends JFrame implements ActionListener{
 	gground.fillRect(0,520,600,80);
 	QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
     	((Graphics2D)g).draw(curve);
-	
     }
     
     // UPDATE and RUN
@@ -201,8 +101,9 @@ public class Sim extends JFrame implements ActionListener{
 	    //run();
 	    //setAngle(temp);
 	    //setDist(temp);
-	    updateGame();
+	    //  updateGame();
 	}
+	//new skater
     }
 
     /** ----------------NEED TO WRITE THIS---------------
@@ -210,15 +111,6 @@ public class Sim extends JFrame implements ActionListener{
     }
     **/
 
-    public static void updateGame(){
-	setMass(Double.parseDouble(m.getText()));
-	setGravity(Double.parseDouble(g.getText()));
-	setCoeff(Double.parseDouble(c.getText()));
-	setTotEnergy();
-	setPotEnergy();
-	// setThermEnergy();
-	setVelocity();
-	setKinEnergy();
-    }
+    
     
 }
