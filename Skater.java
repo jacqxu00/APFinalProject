@@ -19,8 +19,8 @@ public class Skater{
     private double angle;
     private Vector<Double> position = new Vector<Double>();
     private Vector<Double> velocity = new Vector<Double>();
-    private String imgSkaterJPG = "images/skater.jpg"; // relative to project root (or bin)
-   private Image img;  // a BufferedImage object
+    private String imgSkaterJPG = "images/skater.jpg"; 
+    private Image img;  // this is a BufferedImage object
 
     public Skater(){
 	mass = 50.0;
@@ -68,7 +68,6 @@ public class Skater{
 	return this.coeff;
     }
 
-
     public void setCoeff(double c) {
 	this.coeff = c;
     }
@@ -87,7 +86,7 @@ public class Skater{
 	return this.angle;
     }
 
-        public void setAngle(Vector<Double> old) {
+    public void setAngle(Vector<Double> old) {
 	double ans;
         if ((old.get(0) - this.position.get(0)) <= 0 && (old.get(1) - this.position.get(1)) <= 0) {
 	    ans = 3*Math.PI/2 + Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
@@ -202,5 +201,4 @@ public class Skater{
 	System.out.println(skater.getThermEnergy());
 	System.out.println(skater.getVelocity());
     }
-
 }
