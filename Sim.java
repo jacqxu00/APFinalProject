@@ -54,12 +54,23 @@ public class Sim extends JFrame implements ActionListener {
 	pane.add(clab);
 	pane.add(c);
 	pane.add(tabbedPane);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 	/*layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, move, 300, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);*/
+<<<<<<< HEAD
 	/*layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
 	  layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);*/
+=======
+=======
+	/*layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
+	  layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);*/
+>>>>>>> asim
+>>>>>>> master
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
@@ -107,6 +118,10 @@ public class Sim extends JFrame implements ActionListener {
 	int delay = 1000; //in milliseconds
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 		    double mass = Double.parseDouble(m.getText());
 		    y.setMass(mass);
 		    double grav = Double.parseDouble(g.getText());
@@ -122,6 +137,12 @@ public class Sim extends JFrame implements ActionListener {
 		    y.setThermEnergy();
 		    y.setKinEnergy();
 		    y.setVelocity();
+<<<<<<< HEAD
+=======
+=======
+
+>>>>>>> asim
+>>>>>>> master
 		}
 	    };
 	new Timer(delay, taskPerformer).start();
