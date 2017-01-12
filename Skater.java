@@ -71,7 +71,11 @@ public class Skater{
 	return this.dist;
     }
     
+<<<<<<< HEAD
     public double setDist(Vector old) {
+=======
+    public double setDist(Vector<Double> old) {
+>>>>>>> origin
 	double ans = Math.sqrt(Math.pow(old.get(0)-this.position.get(0),2)+Math.pow(old.get(1)-this.position.get(1),2));
 	dist += ans;
 	return ans;
@@ -81,7 +85,11 @@ public class Skater{
 	return this.angle;
     }
 
+<<<<<<< HEAD
     public void setAngle(Vector<double> old) {
+=======
+    public void setAngle(Vector<Double> old) {
+>>>>>>> origin
 	double ans;
         if ((old.get(0) - this.position.get(0)) <= 0 && (old.get(1) - this.position.get(1)) <= 0) {
 	    ans = 3*Math.PI/2 + Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
@@ -95,8 +103,7 @@ public class Skater{
 	if ((old.get(0) - this.position.get(0)) > 0 && (old.get(1) - this.position.get(1)) <= 0) {
 	    ans = 1*Math.PI/2 + Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
 	}
-	
-	angle = ans;
+	this.angle = ans;
     }
    
     public double getPosX(){
@@ -118,6 +125,14 @@ public class Skater{
 
     public double getVelY(){
 	return this.velocity.get(1);
+<<<<<<< HEAD
+=======
+    }
+
+    public double getVelocity(){
+	double velocity = Math.sqrt(Math.pow(this.velocity.get(0),2)+Math.pow(this.velocity.get(1),2));
+	return velocity;
+>>>>>>> origin
     }
 
 
@@ -160,6 +175,7 @@ public class Skater{
     }
 
     public void setKinEnergy() {
+	double velocity = Math.sqrt(Math.pow(this.velocity.get(0),2)+Math.pow(this.velocity.get(1),2));
 	double ans = 0.5 * mass * velocity * velocity;
 	this.kineticE = ans;
     }
