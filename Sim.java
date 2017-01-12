@@ -100,6 +100,7 @@ public class Sim extends JFrame{
 	QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
     	((Graphics2D)g).draw(curve);
     }
+    
 
     public void updateGame(){
 	int delay = 1000; //in milliseconds
