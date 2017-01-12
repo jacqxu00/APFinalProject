@@ -81,7 +81,6 @@ public class Sim extends JFrame{
 	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
-    }
 
 	public void actionPerformed(ActionEvent e){
 	    String event = e.getActionCommand();
@@ -92,7 +91,7 @@ public class Sim extends JFrame{
 	    
 	    }
 	}
-    
+
     public void paint(Graphics g) {
 	Graphics2D gsky = (Graphics2D) g;
 	gsky.setColor(new Color(200,200,225));

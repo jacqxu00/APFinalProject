@@ -85,20 +85,17 @@ public class Skater{
 	double ans;
         if ((old.get(0) - this.position.get(0)) <= 0 && (old.get(1) - this.position.get(1)) <= 0) {
 	    ans = 3*Math.PI/2 + Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
-	    this.angle = ans;
 	}
 	if ((old.get(0) - this.position.get(0)) <= 0 && (old.get(1) - this.position.get(1)) > 0) {
 	    ans = 1*Math.PI/2 - Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
-	    this.angle = ans;
 	}
 	if ((old.get(0) - this.position.get(0)) > 0 && (old.get(1) - this.position.get(1)) <= 0) {
 	    ans = 3*Math.PI/2 - Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
-	    this.angle = ans;
 	}
 	if ((old.get(0) - this.position.get(0)) > 0 && (old.get(1) - this.position.get(1)) <= 0) {
 	    ans = 1*Math.PI/2 + Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
-	    this.angle = ans;
 	}
+	this.angle = ans;
     }
    
     public double getPosX(){
@@ -169,9 +166,6 @@ public class Skater{
 	double velocity = Math.sqrt(Math.pow(this.velocity.get(0),2)+Math.pow(this.velocity.get(1),2));
 	double ans = 0.5 * mass * velocity * velocity;
 	this.kineticE = ans;
-    }
-
-    public void paint(Graphics g, ){
     }
     
     public static void main (String[] args){
