@@ -26,17 +26,16 @@ public class Skater{
 	mass = 50.0;
 	gravity = 9.81;
 	coeff = 0;
-        setHeight();
-	velocity.add(0.0);
-	velocity.add(0.0);
 	position.add(40.0);
 	position.add(185.0);
+	setHeight();
 	dist = 0;
-	totalE = 0;
-	kineticE = 0;
-	potentialE = 0;
-	thermalE = 0;
-	angle = 0;
+	setPotEnergy();
+        thermalE = 0;
+        setTotEnergy();
+        setKinEnergy();
+	setVelocity();
+	angle = Math.PI/9;
     }
 
     
@@ -135,8 +134,7 @@ public class Skater{
     }
 
     public void setVelocity() {
-	double ans = totalE - potentialE - thermalE;
-	double vel  = Math.sqrt((2 * ans)/mass);
+	double vel = Math.sqrt((2 * this.kineticE)/this.mass);
 	this.velocity.set(0,Math.cos(angle) * vel);
 	this.velocity.set(1,Math.sin(angle) * vel);
     }
@@ -173,8 +171,7 @@ public class Skater{
     }
 
     public void setKinEnergy() {
-	double velocity = Math.sqrt(Math.pow(this.velocity.get(0),2)+Math.pow(this.velocity.get(1),2));
-	double ans = 0.5 * mass * velocity * velocity;
+        double ans = this.totalE - this.potentialE - this.thermalE;
 	this.kineticE = ans;
     }
 
