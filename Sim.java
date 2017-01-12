@@ -81,16 +81,6 @@ public class Sim extends JFrame{
 	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    }  
-=======
-    }
->>>>>>> a5c4b6fcf5169376cb3d6b3926b3c95939c5659f
-<<<<<<< HEAD
-    }  
-=======
     }
 
     public void actionPerformed(ActionEvent e){
@@ -102,12 +92,6 @@ public class Sim extends JFrame{
 	    
 	}
     }
-   
-<<<<<<< HEAD
->>>>>>> jackie
-=======
->>>>>>> origin/jackie
->>>>>>> a5c4b6fcf5169376cb3d6b3926b3c95939c5659f
 
     public void paint(Graphics g) {
 	Graphics2D gsky = (Graphics2D) g;
@@ -125,6 +109,7 @@ public class Sim extends JFrame{
     public static void main(String[] args){
 	Sim z = new Sim();
         z.setVisible(true);
+	Skater y = new Skater();
 	while(true){
 	    //Pvector temp = (position.x,position.y);
 	    //run();
