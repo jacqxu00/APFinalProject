@@ -5,6 +5,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.Timer;
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
 
 public class Sim extends JFrame{
 
@@ -19,6 +22,9 @@ public class Sim extends JFrame{
     private JPanel barsPage;
     private JPanel valsPage;
     private Skater y = new Skater();
+    private String imgSkaterJPG = "images/skater.jpg"; 
+    private Image img;  // this is a BufferedImage object
+    
 
     public Sim() { //change!!
 	setTitle("Conservation of Energy: AsimulaXuon");
@@ -100,9 +106,29 @@ public class Sim extends JFrame{
 	QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
     	((Graphics2D)g).draw(curve);
     }
+
+    /* public void paint2 (Graphics g){
+	URL imgUrl = getClass().getClassLoader().getResource(imgSkaterJPG);
+	if (imgUrl == null) {
+	    System.err.println("Couldn't find file: " + imgSkaterJPG);
+	} else {
+	    try {
+		img = ImageIO.read(imgUrl);
+	    } catch (IOException ex) {
+		ex.printStackTrace();
+	    }
+	}
+	g.drawImage(img, 40, 190, null);
+	y.position.set(0,y.position.get(0)+y.velocity.get(0)/100);
+	y.position.set(0,y.position.get(1)+y.velocity.get(1)/100);
+	}*/
+
+
+    
     
 
     public void updateGame(){
+	Object p = new Object();
 	int delay = 1000; //in milliseconds
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
@@ -113,7 +139,7 @@ public class Sim extends JFrame{
 		    double coeff = Double.parseDouble(c.getText());
 		    y.setCoeff(coeff);
 		    Vector<Double> temp = new Vector<Double>();
-		    y.paint((Graphics)g);
+		    y.paint3((Graphics)p);
 		    y.setHeight();
 		    y.setPotEnergy();
 		    y.setDist(temp);
