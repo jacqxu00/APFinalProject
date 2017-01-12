@@ -6,12 +6,19 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.Timer;
 
-public class Sim extends JFrame{
+public class Sim extends JFrame implements ActionListener {
 
-    private static Container pane;
-    private static JTextField m;
-    private static JTextField g;
-    private static JTextField c;
+    private Container pane;
+    private JTextField m;
+    private JTextField g;
+    private JTextField c;
+    private JLabel mlab;
+    private JLabel glab;
+    private JLabel clab;
+    private JTabbedPane tabbedPane;
+    private JPanel barsPage;
+    private JPanel valsPage;
+    private Skater y = new Skater();
 
     public Sim() { //change!!
 	setTitle("Conservation of Energy: AsimulaXuon");
@@ -25,18 +32,18 @@ public class Sim extends JFrame{
 	/*JButton move  = new JButton("Go");
 	move.addActionListener(this);
 	move.setActionCommand("Go");*/
-	JTextField m = new JTextField(10);
+        m = new JTextField(10);
 	m.setText("50.0");
-	JTextField g = new JTextField(10);
+	g = new JTextField(10);
 	g.setText("9.81");
-	JTextField c = new JTextField(10);
+	c = new JTextField(10);
 	c.setText("0.0");
-	JLabel mlab = new JLabel("Mass of Skater");
-	JLabel glab = new JLabel("Gravitational Acceleration");
-	JLabel clab = new JLabel("Coefficient of Friction");
-	JTabbedPane tabbedPane = new JTabbedPane();
-	JPanel barsPage=new JPanel();
-	JPanel valsPage=new JPanel();
+        mlab = new JLabel("Mass of Skater");
+	glab = new JLabel("Gravitational Acceleration");
+        clab = new JLabel("Coefficient of Friction");
+	tabbedPane = new JTabbedPane();
+        barsPage=new JPanel();
+        valsPage=new JPanel();
 	tabbedPane.addTab("Bar Graph",barsPage);
  	tabbedPane.addTab("Values", valsPage);
 	//pane.add(move);
@@ -47,12 +54,10 @@ public class Sim extends JFrame{
 	pane.add(clab);
 	pane.add(c);
 	pane.add(tabbedPane);
-	layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
+	/*layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, move, 300, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);
-	/*layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
-	  layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);*/
+	layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);*/
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
@@ -105,27 +110,35 @@ public class Sim extends JFrame{
     	((Graphics2D)g).draw(curve);
     }
 
-    public static void main(String[] args){
-	Sim z = new Sim();
-        z.setVisible(true);
-	Skater y = new Skater();
-	while(true){
-	    //Pvector temp = (position.x,position.y);
-	    //run();
-	    //setAngle(temp);
-	    //setDist(temp);
-	   updateGame();
-	}
-	//new skater
-    }
-
-    public static void updateGame(){
+    public void updateGame(){
 	int delay = 1000; //in milliseconds
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
-		    
+		    double mass = Double.parseDouble(m.getText());
+		    y.setMass(mass);
+		    double grav = Double.parseDouble(g.getText());
+		    y.setGravity(grav);
+		    double coeff = Double.parseDouble(c.getText());
+		    y.setCoeff(coeff);
+		    Vector<Double> temp = new Vector<Double>();
+		    //movement
+		    y.setHeight();
+		    y.setPotEnergy();
+		    y.setDist(temp);
+		    y.setAngle(temp);
+		    y.setThermEnergy();
+		    y.setKinEnergy();
+		    y.setVelocity();
 		}
 	    };
 	new Timer(delay, taskPerformer).start();
+    }
+
+    public void main(String[] args){
+	Sim z = new Sim();
+        z.setVisible(true);
+	while(true){
+	   updateGame();
+	}
     }
 }
