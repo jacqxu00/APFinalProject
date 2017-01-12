@@ -105,6 +105,9 @@ public class Sim extends JFrame{
     	((Graphics2D)g).draw(curve);
     }
 
+    //  public void paint2(Graphics g, ){
+    // }
+
     public static void main(String[] args){
 	Sim z = new Sim();
         z.setVisible(true);
@@ -122,7 +125,7 @@ public class Sim extends JFrame{
 	int delay = 1000; //in milliseconds
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
-		    
+		    //paint2, with changing position/velocity for skater
 		}
 	    };
 	new Timer(delay, taskPerformer).start();
