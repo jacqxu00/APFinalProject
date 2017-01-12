@@ -112,7 +112,7 @@ public class Sim extends JFrame{
 		    double coeff = Double.parseDouble(c.getText());
 		    y.setCoeff(coeff);
 		    Vector<Double> temp = new Vector<Double>();
-		    //movement
+		    y.paint(Graphics g);
 		    y.setHeight();
 		    y.setPotEnergy();
 		    y.setDist(temp);
