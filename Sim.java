@@ -55,6 +55,7 @@ public class Sim extends JFrame implements ActionListener {
 	pane.add(c);
 	pane.add(tabbedPane);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> master
@@ -70,6 +71,10 @@ public class Sim extends JFrame implements ActionListener {
 	/*layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
 	  layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);*/
 >>>>>>> asim
+>>>>>>> master
+=======
+	/*layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
+	  layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);*/
 >>>>>>> master
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
@@ -119,8 +124,11 @@ public class Sim extends JFrame implements ActionListener {
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 		    double mass = Double.parseDouble(m.getText());
 		    y.setMass(mass);
@@ -138,10 +146,13 @@ public class Sim extends JFrame implements ActionListener {
 		    y.setKinEnergy();
 		    y.setVelocity();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 
 >>>>>>> asim
+>>>>>>> master
+=======
 >>>>>>> master
 		}
 	    };
