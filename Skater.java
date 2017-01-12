@@ -2,6 +2,7 @@ import java.lang.Math;
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
+import java.awt.Rectangle;
 
 public class Skater{
     private double mass;
@@ -14,16 +15,21 @@ public class Skater{
     private double potentialE;
     private double thermalE;
     private double angle;
+    private double px,py;
     private Vector<Double> position = new Vector<Double>(2);
     private Vector<Double> velocity = new Vector<Double>(2);
+    private Rectangle location;
+    private Color color;
 
 
-    public Skater(){
+    public Skater(double x, double y, double r){
 	mass = 50.0;
 	gravity = 9.81;
 	coeff = 0;
-	position.add(40.0);
-	position.add(185.0);
+	position.add(x);
+	position.add(y);
+	px = x;
+	py = y;
 	setHeight();
 	dist = 0;
 	setPotEnergy();
@@ -34,9 +40,15 @@ public class Skater{
 	double vel = Math.sqrt((2 * this.kineticE)/this.mass);
         velocity.add(Math.cos(angle) * vel);
 	velocity.add(Math.sin(angle) * vel);
+	location = new Rectangle((int)(x-r), (int)(y-r), (int)(2*r),(int)( 2*r));
+	color = Color.red;
     }
 
-    
+    public void setMotion(double newX, double newY){
+	position.set(0,newX);
+	position.set(1,newY);
+    }
+
     public double getMass(){
 	return this.mass;
     }
@@ -125,6 +137,30 @@ public class Skater{
 	return this.velocity.get(1);
     }
 
+    public int radius(){    
+    return location.width/2;
+}
+
+    public int x(){
+	return location.x + radius();
+    }
+    
+    public int y(){
+	return location.y + radius();
+    }
+
+    public double xMotion(){
+	return px;
+    }
+    
+    public double yMotion(){    
+	return py;
+    }
+
+    public Rectangle region(){
+	return location;
+    }
+    
     public double getVelocity(){
 	double velocity = Math.sqrt(Math.pow(this.velocity.get(0),2)+Math.pow(this.velocity.get(1),2));
 	return velocity;
@@ -172,6 +208,19 @@ public class Skater{
 	this.kineticE = ans;
     }
 
+    public void moveTo(double x, double y){
+	location.setLocation((int)x, (int) y);
+    }
+
+    public void move(){
+	location.translate((int) px,(int) py);
+    }
+
+    public void paint(Graphics g){
+	//g.setColor(color);
+	g.fillOval(location.x, location.y,location.width,location.height);
+    }
+
     /* public void paint(Graphics g){
 	URL imgUrl = getClass().getClassLoader().getResource(imgSkaterJPG);
 	if (imgUrl == null) {
@@ -195,7 +244,7 @@ public class Skater{
 	}*/
     
     public static void main (String[] args){
-	Skater skater = new Skater();
+	/*	Skater skater = new Skater();
 	System.out.println(skater.getMass());
 	System.out.println(skater.getGravity());
 	System.out.println(skater.getCoeff());
@@ -203,6 +252,6 @@ public class Skater{
 	System.out.println(skater.getPotEnergy());
 	System.out.println(skater.getKinEnergy());
 	System.out.println(skater.getThermEnergy());
-	System.out.println(skater.getVelocity());
+	System.out.println(skater.getVelocity());*/
     }
 }
