@@ -35,8 +35,10 @@ public class Skater{
 	setPotEnergy();
         thermalE = 0;
         setTotEnergy();
+	position.set(1,186.1);
+	setPotEnergy();
         setKinEnergy();
-	angle = Math.PI/9;
+	angle = 17*Math.PI/9;
 	double vel = Math.sqrt((2 * this.kineticE)/this.mass);
         velocity.add(Math.cos(angle) * vel);
 	velocity.add(Math.sin(angle) * vel);
@@ -99,19 +101,19 @@ public class Skater{
     public void setAngle(Vector<Double> old) {
 	double ans;
         if ((old.get(0) - this.position.get(0)) <= 0 && (old.get(1) - this.position.get(1)) <= 0) {
-	    ans = 3*Math.PI/2 + Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
+	    ans = 2*Math.PI - Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
 	    this.angle = ans;
 	}
 	if ((old.get(0) - this.position.get(0)) <= 0 && (old.get(1) - this.position.get(1)) > 0) {
-	    ans = 1*Math.PI/2 - Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
+	    ans = Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
 	    this.angle = ans;
 	}
 	if ((old.get(0) - this.position.get(0)) > 0 && (old.get(1) - this.position.get(1)) <= 0) {
-	    ans = 3*Math.PI/2 - Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
+	    ans = Math.PI - Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
 	    this.angle = ans;
 	}
 	if ((old.get(0) - this.position.get(0)) > 0 && (old.get(1) - this.position.get(1)) <= 0) {
-	    ans = 1*Math.PI/2 + Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
+	    ans = Math.PI + Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
 	    this.angle = ans;
 	}
     }

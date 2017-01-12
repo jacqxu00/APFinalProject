@@ -141,7 +141,7 @@ public class Sim extends JFrame{
     
 
     public void updateGame(){
-	int delay = 1000; 
+	int delay = 10000; 
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
 		    double mass = Double.parseDouble(m.getText());
@@ -154,15 +154,24 @@ public class Sim extends JFrame{
 		    temp.add(0.0); //values?
 		    temp.add(0.0); //values?
 		    repaint();
-		    circle.moveTo(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100);
-		    y.setPosition(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100); 
 		    y.setHeight();
 		    y.setPotEnergy();
+		    circle.moveTo(y.getPosX()+y.getVelX()/100,y.getPosY()-y.getVelY()/1000);
+		    y.setPosition(y.getPosX()+y.getVelX()/100,y.getPosY()-y.getVelY()/1000); 
 		    y.setDist(temp);
 		    y.setAngle(temp);
 		    y.setThermEnergy();
 		    y.setKinEnergy();
 		    y.setVelocity();
+		    System.out.println("Angle: " + y.getAngle());
+		    System.out.println("Position: " + y.getPosX() + ", " + y.getPosY());
+		    System.out.println("Velocity: " + y.getVelX() + ", " + y.getVelY());
+		    System.out.println("Height: " + y.geHeight());
+		    System.out.println("Potential Energy: " + y.getPotEnergy());
+		    System.out.println("Kinetic Energy: " + y.getKinEnergy());
+		    System.out.println("Thermal Energy: " + y.getThermEnergy());
+		    System.out.println("Total Energy: " + y.getTotEnergy());
+		    System.out.println("");
 		}
 	    };
 	new Timer(delay, taskPerformer).start();
