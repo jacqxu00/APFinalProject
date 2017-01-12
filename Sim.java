@@ -81,18 +81,26 @@ public class Sim extends JFrame{
 	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
+<<<<<<< HEAD
+    }
+=======
+>>>>>>> cfacfd236c78e6283aae818d36cfa24e971e90e0
+
+	public void actionPerformed(ActionEvent e){
+	    String event = e.getActionCommand();
+	    if(event.equals("Byte")){
+		
+	    }
+	    if(event.equals("NotByte")){
+	    
+	    }
+	}
+<<<<<<< HEAD
     }
 
-    public void actionPerformed(ActionEvent e){
-	String event = e.getActionCommand();
-	if(event.equals("Byte")){
-	    
-	}
-	if(event.equals("NotByte")){
-	    
-	}
-    }
-
+=======
+   
+>>>>>>> cfacfd236c78e6283aae818d36cfa24e971e90e0
     public void paint(Graphics g) {
 	Graphics2D gsky = (Graphics2D) g;
 	gsky.setColor(new Color(200,200,225));
