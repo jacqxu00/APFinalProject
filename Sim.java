@@ -16,7 +16,8 @@ public class Sim extends JFrame{
     public Sim() { //change!!
 	setTitle("Conservation of Energy: AsimulaXuon");
         setSize(1000,600);
-	//setLocation(100,100);
+	setVisible(true);
+	setLocation(100,100);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	Container pane = getContentPane();
 	SpringLayout layout = new SpringLayout();
@@ -46,6 +47,10 @@ public class Sim extends JFrame{
 	pane.add(clab);
 	pane.add(c);
 	pane.add(tabbedPane);
+	layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, move, 300, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);
 	/*layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
 	  layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);*/
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
@@ -76,7 +81,22 @@ public class Sim extends JFrame{
 	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
+<<<<<<< HEAD
     }  
+=======
+    }
+
+    public void actionPerformed(ActionEvent e){
+	String event = e.getActionCommand();
+	if(event.equals("Byte")){
+	    
+	}
+	if(event.equals("NotByte")){
+	    
+	}
+    }
+   
+>>>>>>> jackie
 
     public void paint(Graphics g) {
 	Graphics2D gsky = (Graphics2D) g;
