@@ -82,6 +82,13 @@ public class Sim extends JFrame{
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    }  
+=======
+    }
+>>>>>>> a5c4b6fcf5169376cb3d6b3926b3c95939c5659f
+<<<<<<< HEAD
     }  
 =======
     }
@@ -96,7 +103,11 @@ public class Sim extends JFrame{
 	}
     }
    
+<<<<<<< HEAD
 >>>>>>> jackie
+=======
+>>>>>>> origin/jackie
+>>>>>>> a5c4b6fcf5169376cb3d6b3926b3c95939c5659f
 
     public void paint(Graphics g) {
 	Graphics2D gsky = (Graphics2D) g;
