@@ -85,17 +85,20 @@ public class Skater{
 	double ans;
         if ((old.get(0) - this.position.get(0)) <= 0 && (old.get(1) - this.position.get(1)) <= 0) {
 	    ans = 3*Math.PI/2 + Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
+	    this.angle = ans;
 	}
 	if ((old.get(0) - this.position.get(0)) <= 0 && (old.get(1) - this.position.get(1)) > 0) {
 	    ans = 1*Math.PI/2 - Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
+	    this.angle = ans;
 	}
 	if ((old.get(0) - this.position.get(0)) > 0 && (old.get(1) - this.position.get(1)) <= 0) {
 	    ans = 3*Math.PI/2 - Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
+	    this.angle = ans;
 	}
 	if ((old.get(0) - this.position.get(0)) > 0 && (old.get(1) - this.position.get(1)) <= 0) {
 	    ans = 1*Math.PI/2 + Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
+	    this.angle = ans;
 	}
-	this.angle = ans;
     }
    
     public double getPosX(){
