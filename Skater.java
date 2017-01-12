@@ -1,5 +1,10 @@
 import java.lang.Math;
 import java.util.*;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.*;
 
 public class Skater{
     private double mass;
@@ -14,6 +19,8 @@ public class Skater{
     private double angle;
     private Vector<Double> position = new Vector<Double>();
     private Vector<Double> velocity = new Vector<Double>();
+    private String imgSkaterJPG = "images/skater.jpg"; // relative to project root (or bin)
+   private Image img;  // a BufferedImage object
 
     public Skater(){
 	mass = 50.0;
@@ -168,7 +175,20 @@ public class Skater{
 	this.kineticE = ans;
     }
 
-    public void paint(Graphics g, ){
+    public void paint(Graphics g){
+	URL imgUrl = getClass().getClassLoader().getResource(imgSkaterJPG);
+	if (imgUrl == null) {
+	    System.err.println("Couldn't find file: " + imgSkaterJPG);
+	} else {
+	    try {
+		img = ImageIO.read(imgUrl);
+	    } catch (IOException ex) {
+		ex.printStackTrace();
+	    }
+	}
+	g.drawImage(img, 40, 190, null);
+	this.position.set(0,this.position.get(0)+this.velocity.get(0)/100);
+	this.position.set(0,this.position.get(1)+this.velocity.get(1)/100);
     }
     
     public static void main (String[] args){

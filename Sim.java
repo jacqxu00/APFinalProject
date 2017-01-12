@@ -47,10 +47,6 @@ public class Sim extends JFrame{
 	pane.add(clab);
 	pane.add(c);
 	pane.add(tabbedPane);
-	layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, move, 300, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);
 	/*layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
 	  layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);*/
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
@@ -82,15 +78,6 @@ public class Sim extends JFrame{
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
 
-	public void actionPerformed(ActionEvent e){
-	    String event = e.getActionCommand();
-	    if(event.equals("Byte")){
-		
-	    }
-	    if(event.equals("NotByte")){
-	    
-	    }
-	}
 
     public void paint(Graphics g) {
 	Graphics2D gsky = (Graphics2D) g;
@@ -123,7 +110,7 @@ public class Sim extends JFrame{
 	int delay = 1000; //in milliseconds
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
-		    
+
 		}
 	    };
 	new Timer(delay, taskPerformer).start();
