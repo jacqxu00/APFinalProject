@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.Timer;
 
-public class Sim extends JFrame implements ActionListener {
+public class Sim extends JFrame{
 
     private Container pane;
     private JTextField m;
@@ -125,11 +125,11 @@ public class Sim extends JFrame implements ActionListener {
 	new Timer(delay, taskPerformer).start();
     }
 
-    public void main(String[] args){
+    public static void main(String[] args){
 	Sim z = new Sim();
         z.setVisible(true);
 	while(true){
-	   updateGame();
+	   z.updateGame();
 	}
     }
 }
