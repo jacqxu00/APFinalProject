@@ -36,12 +36,8 @@ public class Sim extends JFrame implements ActionListener{
 	angle = 0;
 	setTitle("Conservation of Energy: AsimulaXuon");
         setSize(1000,600);
-<<<<<<< HEAD
 	setVisible(true);
 	setLocation(100,100);
-=======
-	//setLocation(100,100);
->>>>>>> master
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	Container pane = getContentPane();
 	SpringLayout layout = new SpringLayout();
@@ -71,13 +67,10 @@ public class Sim extends JFrame implements ActionListener{
 	pane.add(clab);
 	pane.add(c);
 	pane.add(tabbedPane);
-<<<<<<< HEAD
 	layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, move, 300, SpringLayout.WEST, pane);
-=======
 	layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);
->>>>>>> master
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
@@ -116,10 +109,6 @@ public class Sim extends JFrame implements ActionListener{
 	if(event.equals("NotByte")){
 	    
 	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> master
     }
 
     // MATH
