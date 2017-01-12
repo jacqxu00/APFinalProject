@@ -186,14 +186,14 @@ public class Skater{
 	g.drawImage(img, 40, 190, null);
 	this.position.set(0,this.position.get(0)+this.velocity.get(0)/100);
 	this.position.set(0,this.position.get(1)+this.velocity.get(1)/100);
-	}*/
+	}
 
     public void paint3 (Graphics g){
 	Graphics2D circle = (Graphics2D) g;
 	circle.drawOval(40,190,10,10);
 	this.position.set(0,this.position.get(0)+this.velocity.get(0)/100);
 	this.position.set(0,this.position.get(1)+this.velocity.get(1)/100);
-    }
+	}*/
     
     public static void main (String[] args){
 	Skater skater = new Skater();

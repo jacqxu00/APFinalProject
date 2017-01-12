@@ -105,6 +105,9 @@ public class Sim extends JFrame{
 	gground.fillRect(0,520,600,80);
 	QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
     	((Graphics2D)g).draw(curve);
+	Graphics2D circle = (Graphics2D) g;
+	circle.drawOval(40,190,10,10);
+
     }
 
     /* public void paint2 (Graphics g){
@@ -123,8 +126,6 @@ public class Sim extends JFrame{
 	y.position.set(0,y.position.get(1)+y.velocity.get(1)/100);
 	}*/
 
-
-    
     
 
     public void updateGame(){
@@ -139,11 +140,8 @@ public class Sim extends JFrame{
 		    double coeff = Double.parseDouble(c.getText());
 		    y.setCoeff(coeff);
 		    Vector<Double> temp = new Vector<Double>();
-<<<<<<< HEAD
-		    y.paint(Graphics);
-=======
-		    y.paint3((Graphics)p);
->>>>>>> origin/master
+		    repaint();
+		    y.setPosition(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100);
 		    y.setHeight();
 		    y.setPotEnergy();
 		    y.setDist(temp);
