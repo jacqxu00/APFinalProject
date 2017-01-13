@@ -25,9 +25,11 @@ public class Sim extends JFrame{
     private String imgSkaterJPG = "images/skater.jpg"; 
     private Image img;  // this is a BufferedImage object
     private Skater circle = new Skater(40.0,185.0,10.0);
+    private JButton move = new JButton("Go");
+    private JButton stop = new JButton("Stop");
     
 
-    public Sim() { //change!!
+    public Sim() { 
 	setTitle("Conservation of Energy: AsimulaXuon");
         setSize(1000,600);
 	setVisible(true);
@@ -36,9 +38,31 @@ public class Sim extends JFrame{
 	Container pane = getContentPane();
 	SpringLayout layout = new SpringLayout();
 	pane.setLayout(layout);
-	/*JButton move  = new JButton("Go");
-	move.addActionListener(this);
-	move.setActionCommand("Go");*/
+	/*move.addActionListener(ActionListener taskPerformer = new ActionListener(){int delay = 1000; {
+		public void actionPerformed(ActionEvent evt) {
+		    double mass = Double.parseDouble(m.getText());
+		    y.setMass(mass);
+		    double grav = Double.parseDouble(g.getText());
+		    y.setGravity(grav);
+		    double coeff = Double.parseDouble(c.getText());
+		    y.setCoeff(coeff);
+		    Vector<Double> temp = new Vector<Double>(2);
+		    temp.add(0.0); //values?
+		    temp.add(0.0); //values?
+		    repaint();
+		    circle.moveTo(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100);
+		    y.setPosition(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100); 
+		    y.setHeight();
+		    y.setPotEnergy();
+		    y.setDist(temp);
+		    y.setAngle(temp);
+		    y.setThermEnergy();
+		    y.setKinEnergy();
+		    y.setVelocity();
+		}}
+		move.setActionCommand("Go");*/
+	/*stop.addActionListener(stop);
+	  stop.setActionCommand("Stop");*/
         m = new JTextField(10);
 	m.setText("50.0");
 	g = new JTextField(10);
@@ -53,7 +77,8 @@ public class Sim extends JFrame{
         valsPage=new JPanel();
 	tabbedPane.addTab("Bar Graph",barsPage);
  	tabbedPane.addTab("Values", valsPage);
-	//pane.add(move);
+	pane.add(move);
+	pane.add(stop);
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
@@ -61,10 +86,8 @@ public class Sim extends JFrame{
 	pane.add(clab);
 	pane.add(c);
 	pane.add(tabbedPane);
-	/*layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, move, 300, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);*/
+	layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
@@ -96,6 +119,17 @@ public class Sim extends JFrame{
 
 	circle = new Skater(10, 15, 5);
 	circle.setMotion(3.0, 6.0);
+    }
+
+
+    public void actionPerformed(ActionEvent e){
+	String event = e.getActionCommand();
+	if(event.equals("Go")){
+
+	}
+	if(event.equals("Stop")){
+
+	}
     }
 
     public void paint(Graphics g) {
@@ -141,10 +175,10 @@ public class Sim extends JFrame{
     
 
     public void updateGame(){
-	int delay = 1000; 
-	ActionListener taskPerformer = new ActionListener() {
+	int delay = 1000;
+	Timer timer = new Timer (delay, new ActionListener(){
 		public void actionPerformed(ActionEvent evt) {
-		    double mass = Double.parseDouble(m.getText());
+		    /* double mass = Double.parseDouble(m.getText());
 		    y.setMass(mass);
 		    double grav = Double.parseDouble(g.getText());
 		    y.setGravity(grav);
@@ -162,17 +196,18 @@ public class Sim extends JFrame{
 		    y.setAngle(temp);
 		    y.setThermEnergy();
 		    y.setKinEnergy();
-		    y.setVelocity();
-		}
-	    };
-	new Timer(delay, taskPerformer).start();
-    }
+		    y.setVelocity();*/
+		    System.out.println("test");
+		};});
+	    }
+	    
+	    
 
-    public static void main(String[] args){
-	Sim z = new Sim();
-        z.setVisible(true);
-	while(true){
-	   z.updateGame();
+	    public static void main(String[] args){
+	    Sim z = new Sim();
+	    z.setVisible(true);
+	    while(true){
+		z.updateGame();
 	}
     }
 }

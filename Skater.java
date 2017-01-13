@@ -43,7 +43,7 @@ public class Skater{
 	location = new Rectangle((int)(x-r), (int)(y-r), (int)(2*r),(int)( 2*r));
 	color = Color.red;
     }
-
+w
     public void setMotion(double newX, double newY){
 	position.set(0,newX);
 	position.set(1,newY);
