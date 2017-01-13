@@ -156,8 +156,8 @@ public class Sim extends JFrame{
 		    repaint();
 		    y.setHeight();
 		    y.setPotEnergy();
-		    circle.moveTo(y.getPosX()+y.getVelX()/100,y.getPosY()-y.getVelY()/1000);
-		    y.setPosition(y.getPosX()+y.getVelX()/100,y.getPosY()-y.getVelY()/1000); 
+		    circle.moveTo(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/1000);
+		    y.setPosition(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/1000); 
 		    y.setDist(temp);
 		    y.setAngle(temp);
 		    y.setThermEnergy();

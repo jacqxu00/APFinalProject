@@ -171,7 +171,7 @@ public class Skater{
     public void setVelocity() {
 	double vel = Math.sqrt((2 * this.kineticE)/this.mass);
 	this.velocity.set(0,Math.cos(angle) * vel);
-	this.velocity.set(1,Math.sin(angle) * vel); //1?
+	this.velocity.set(1,-1 * Math.sin(angle) * vel); //1?
     }
 
     public double getPotEnergy() {
