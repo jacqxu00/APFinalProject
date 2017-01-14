@@ -11,6 +11,8 @@ import javax.imageio.ImageIO;
 
 public class Sim extends JFrame{
 
+    public static final int framewidth = 1000;
+    public static final int frameheight = 600;
     private Container pane;
     private JTextField m;
     private JTextField g;
@@ -29,6 +31,7 @@ public class Sim extends JFrame{
 
     public Sim() { //change!!
 	setTitle("Conservation of Energy: AsimulaXuon");
+	// add JLabel coordinates skater
         setSize(1000,600);
 	setVisible(true);
 	setLocation(100,100);
@@ -36,9 +39,9 @@ public class Sim extends JFrame{
 	Container pane = getContentPane();
 	SpringLayout layout = new SpringLayout();
 	pane.setLayout(layout);
-	/*JButton move  = new JButton("Go");
-	move.addActionListener(this);
-	move.setActionCommand("Go");*/
+	JButton move  = new JButton("Go");
+	//	move.addActionListener(this);
+	move.setActionCommand("Go");
         m = new JTextField(10);
 	m.setText("50.0");
 	g = new JTextField(10);
@@ -53,7 +56,8 @@ public class Sim extends JFrame{
         valsPage=new JPanel();
 	tabbedPane.addTab("Bar Graph",barsPage);
  	tabbedPane.addTab("Values", valsPage);
-	//pane.add(move);
+	pane.add(move);
+	
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
@@ -61,10 +65,10 @@ public class Sim extends JFrame{
 	pane.add(clab);
 	pane.add(c);
 	pane.add(tabbedPane);
-	/*layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, move, 300, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);*/
+	layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
@@ -113,10 +117,10 @@ public class Sim extends JFrame{
 	circle.drawOval((int)(y.getPosX()+y.getVelX()/100),(int)(y.getPosY()+y.getVelY()/100),10,10);
 	y.setPosition(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100); */
 	circle.paint(g);
-	//if((aball.x() < 0) || (aball.x() > framewidth))
-	//  aball.setMotion(-aball.xMotion(), aball.yMotion());
-	//if((aball.yMotion() < 0) || (aball.yMotion() > frameheight))
-	//  aball.setMotion(aball.xMotion(),-aball.yMotion());
+	if((circle.x() < 0) || (circle.x() > framewidth))
+	  circle.setMotion(-circle.xMotion(), circle.yMotion());
+	if((circle.yMotion() < 0) || (circle.yMotion() > frameheight))
+	  circle.setMotion(circle.xMotion(),-circle.yMotion());
 
     //redraw  the frame
 
@@ -141,7 +145,7 @@ public class Sim extends JFrame{
     
 
     public void updateGame(){
-	int delay = 10000; 
+	int delay = 50; 
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
 		    double mass = Double.parseDouble(m.getText());
@@ -156,8 +160,8 @@ public class Sim extends JFrame{
 		    repaint();
 		    y.setHeight();
 		    y.setPotEnergy();
-		    circle.moveTo(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/1000);
-		    y.setPosition(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/1000); 
+		    circle.moveTo(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100);
+		    y.setPosition(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100); 
 		    y.setDist(temp);
 		    y.setAngle(temp);
 		    y.setThermEnergy();
@@ -180,8 +184,8 @@ public class Sim extends JFrame{
     public static void main(String[] args){
 	Sim z = new Sim();
         z.setVisible(true);
-	while(true){
+        
 	   z.updateGame();
-	}
+	
     }
 }
