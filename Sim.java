@@ -26,7 +26,12 @@ public class Sim extends JFrame{
     //private Skater y = new Skater(40.0,185.0,10.0);
     private String imgSkaterJPG = "images/skater.jpg"; 
     private Image img;  // this is a BufferedImage object
+<<<<<<< HEAD
     private Skater circle = new Skater(10, 15, 10);    
+=======
+    private Skater circle = new Skater(10, 15, 10);
+    
+>>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
 
     public Sim() {
 	setTitle("Conservation of Energy: AsimulaXuon");
@@ -39,6 +44,7 @@ public class Sim extends JFrame{
 	SpringLayout layout = new SpringLayout();
 	pane.setLayout(layout);
 	JButton move  = new JButton("Go");
+<<<<<<< HEAD
 	move.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -56,11 +62,18 @@ public class Sim extends JFrame{
 		});*/
 	stop.setActionCommand("Stop");
 	m = new JTextField(10);
+=======
+	//	move.addActionListener(this);
+	move.setActionCommand("Go");
+	move.setBackground(new Color(000,075,025));
+    m = new JTextField(10);
+>>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
 	m.setText("50.0");
 	g = new JTextField(10);
 	g.setText("9.81");
 	c = new JTextField(10);
 	c.setText("0.0");
+<<<<<<< HEAD
 	mlab = new JLabel("Mass of Skater (kg)");
 	glab = new JLabel("Gravitational Acceleration (m/s^2)");
 	clab = new JLabel("Coefficient of Friction");
@@ -92,6 +105,17 @@ public class Sim extends JFrame{
 	pane.add(cslider);*/
 	pane.add(move);
 	pane.add(stop);
+=======
+    mlab = new JLabel("Mass of Skater (kg)");
+	glab = new JLabel("Gravitational Acceleration (m/s^2)");
+    clab = new JLabel("Coefficient of Friction");
+	tabbedPane = new JTabbedPane();
+    barsPage=new JPanel();
+    valsPage=new JPanel(new GridLayout(0,1));
+	tabbedPane.addTab("Energy Graph",barsPage);
+ 	tabbedPane.addTab("Skater Values", valsPage);
+	pane.add(move);
+>>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
@@ -99,10 +123,17 @@ public class Sim extends JFrame{
 	pane.add(clab);
 	pane.add(c);
 	pane.add(tabbedPane);
+<<<<<<< HEAD
 	layout.putConstraint(SpringLayout.WEST, move, 800, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, move, 15, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.WEST, stop, 900, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, stop, 15, SpringLayout.WEST, pane);
+=======
+	layout.putConstraint(SpringLayout.WEST, move, 140, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, move, 300, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.WEST, move, 255, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, move, 520, SpringLayout.WEST, pane);
+>>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
@@ -150,6 +181,16 @@ public class Sim extends JFrame{
 	QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
     	((Graphics2D)g).draw(curve);
 	circle.paint(g);
+<<<<<<< HEAD
+=======
+	if((circle.x() < 0) || (circle.x() > framewidth))
+	  circle.setMotion(-circle.xMotion(), circle.yMotion());
+	if((circle.yMotion() < 0) || (circle.yMotion() > frameheight))
+	  circle.setMotion(circle.xMotion(),-circle.yMotion());
+
+    //redraw  the frame
+
+>>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
     }
 
     /* public void paint2 (Graphics g){
@@ -179,12 +220,21 @@ public class Sim extends JFrame{
 		    double coeff = Double.parseDouble(c.getText());
 		    circle.setCoeff(coeff);
 		    Vector<Double> temp = new Vector<Double>(2);
+<<<<<<< HEAD
 		    temp.clear();
 		    temp.add(circle.getPosX()); //values?
 		    temp.add(circle.getPosY()); //values?
 		    repaint();
 		    double newxcor = circle.getPosX()+circle.getVelX()/100;
 		    double newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
+=======
+			temp.clear();
+		    temp.add(circle.getPosX()); //values?
+		    temp.add(circle.getPosY()); //values?
+		    repaint();
+			double newxcor = circle.getPosX()+circle.getVelX()/100;
+			double newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
+>>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
 		    circle.moveTo(newxcor,newycor);
 		    circle.setPosition(newxcor,newycor); 
 		    circle.setHeight();
@@ -201,7 +251,11 @@ public class Sim extends JFrame{
 		    double coeff = Double.parseDouble(c.getText());
 		    circle.setCoeff(coeff);
 		    Vector<Double> temp = new Vector<Double>(2);
+<<<<<<< HEAD
 		    System.out.println("Angle: " + circle.getAngle());
+=======
+			System.out.println("Angle: " + circle.getAngle());
+>>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
 		    System.out.println("Position: " + circle.getPosX() + ", " + circle.getPosY());
 		    System.out.println("Velocity: " + circle.getVelX() + ", " + circle.getVelY());
 		    System.out.println("Height: " + circle.geHeight());
@@ -209,7 +263,12 @@ public class Sim extends JFrame{
 		    System.out.println("Kinetic Energy: " + circle.getKinEnergy());
 		    System.out.println("Thermal Energy: " + circle.getThermEnergy());
 		    System.out.println("Total Energy: " + circle.getTotEnergy());
+<<<<<<< HEAD
 		    temp.clear();
+=======
+		    
+			temp.clear();
+>>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
 		    temp.add(circle.getPosX()); //values?
 		    temp.add(circle.getPosY()); //values?
 		    repaint();
@@ -223,7 +282,11 @@ public class Sim extends JFrame{
 		    circle.setKinEnergy();
 		    circle.setVelocity();
 		    System.out.println(temp);*/
+<<<<<<< HEAD
 		    System.out.println("Angle: " + circle.getAngle()*180/Math.PI);
+=======
+			System.out.println("Angle: " + circle.getAngle()*180/Math.PI);
+>>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
 		    System.out.println("Position: " + circle.getPosX() + ", " + circle.getPosY());
 		    System.out.println("Velocity: " + circle.getVelX() + ", " + circle.getVelY());
 		    System.out.println("Height: " + circle.geHeight());
@@ -231,16 +294,25 @@ public class Sim extends JFrame{
 		    System.out.println("Kinetic Energy: " + circle.getKinEnergy());
 		    System.out.println("Thermal Energy: " + circle.getThermEnergy());
 		    System.out.println("Total Energy: " + circle.getTotEnergy());
+<<<<<<< HEAD
 		    System.out.println("");
 		    JLabel poslab = new JLabel("Position: (" + circle.getPosX() + ", " + circle.getPosY()+ ")");
 		    JLabel vellab = new JLabel("Velocity: " + circle.getVelX() + ", " + circle.getVelY()); //change into just magnitude velocity;
 		    JLabel dislab = new JLabel("Distance: "+ circle.getDist());
 		    JLabel anglab = new JLabel("Angle: "+ circle.getAngle());
+=======
+			System.out.println("");
+		    JLabel poslab = new JLabel("Position: (" + circle.getPosX() + ", " + circle.getPosY()+ ")");
+		    JLabel vellab = new JLabel("Velocity: " + circle.getVelX() + ", " + circle.getVelY()); //change into just magnitude velocity;
+			JLabel dislab = new JLabel("Distance: "+ circle.getDist());
+			JLabel anglab = new JLabel("Angle: "+ circle.getAngle());
+>>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
 		    JLabel heilab = new JLabel("Height: " + circle.geHeight());
 		    JLabel potlab = new JLabel("Potential Energy: " + circle.getPotEnergy());
 		    JLabel kinlab = new JLabel("Kinetic Energy: " + circle.getKinEnergy());
 		    JLabel thelab = new JLabel("Thermal Energy: " + circle.getThermEnergy());
 		    JLabel totlab = new JLabel("Total Energy: " + circle.getTotEnergy());
+<<<<<<< HEAD
 		    valsPage.removeAll();
 		    valsPage.add(poslab);
 		    valsPage.add(vellab);
@@ -251,6 +323,18 @@ public class Sim extends JFrame{
 		    valsPage.add(kinlab);
 		    valsPage.add(thelab);
 		    valsPage.add(totlab);
+=======
+			valsPage.removeAll();
+			valsPage.add(poslab);
+			valsPage.add(vellab);
+			valsPage.add(dislab);
+			valsPage.add(anglab);
+			valsPage.add(heilab);
+			valsPage.add(potlab);
+			valsPage.add(kinlab);
+			valsPage.add(thelab);
+			valsPage.add(totlab);
+>>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
 		}
 	    };
 	new Timer(delay, taskPerformer).start();
@@ -259,6 +343,11 @@ public class Sim extends JFrame{
     public static void main(String[] args){
 	Sim z = new Sim();
         z.setVisible(true);
+<<<<<<< HEAD
 	//z.updateGame();
+=======
+	    z.updateGame();
+	
+>>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
     }
 }

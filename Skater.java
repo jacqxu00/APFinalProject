@@ -38,17 +38,28 @@ public class Skater{
 	position.add(-1 * (320.0/62500)*Math.pow(40.1 - 290,2)+500);
 	velocity.add(0.0);
 	velocity.add(0.0);
+<<<<<<< HEAD
 	Vector<Double> temp = new Vector<Double>(2);
 	temp.clear();
 	temp.add(40.0);
 	temp.add(185.0);
+=======
+    Vector<Double> temp = new Vector<Double>(2);
+	temp.clear();
+    temp.add(40.0);
+    temp.add(185.0);
+>>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
 	setDist(temp);
 	setAngle(temp);
 	setHeight();
 	setPotEnergy();
 	thermalE = 0;
         setKinEnergy();
+<<<<<<< HEAD
 	setVelocity();
+=======
+		setVelocity();
+>>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
 	double vel = Math.sqrt((2 * this.kineticE)/this.mass);
         velocity.add(Math.cos(angle) * vel);
 	velocity.add(Math.sin(angle) * vel);
