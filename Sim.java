@@ -53,7 +53,7 @@ public class Sim extends JFrame{
 	glab = new JLabel("Gravitational Acceleration (m/s^2)");
     clab = new JLabel("Coefficient of Friction");
 	tabbedPane = new JTabbedPane();
-    barsPage=new JPanel(new SpringLayout);
+    barsPage=new JPanel();
     valsPage=new JPanel(new GridLayout(0,1));
 	tabbedPane.addTab("Energy Graph",barsPage);
  	tabbedPane.addTab("Skater Values", valsPage);
