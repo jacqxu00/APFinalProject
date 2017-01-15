@@ -34,7 +34,6 @@ Jacqueline Xu and Asim Kapparova
 <h2> How To Compile/Run </h2>
 <p> In Terminal, type the following:
 	<ol>
-	  <li></li>
 	  <li>javac Skater.java </li>
 	  <li>javac Bar.java </li>
 	  <li>javac Sim.java </li>
