@@ -2,10 +2,10 @@
 Jacqueline Xu and Asim Kapparova
 
 <h2> Description </h2>
-<p> This program is a simulation of the Law of Conservation of Energy through the typical “roller coaster problem,” using a skater in a skate park. This project idea was inspired by <a href="https://phet.colorado.edu/en/simulation/energy-skate-park-basics"> PhET Simulations Energy Skate Park </a>. In this simulation, the skater will follow a track at a velocity based on its translational kinetic energy. As with most basic conservation of energy simulations, rotational kinetic energy (kinetic energy of the rotating wheels) is ignored. </p>
+<p> This program is a simulation of the Law of Conservation of Energy through the typical “roller coaster problem,” using a skater in a skate park. This project idea was inspired by <a href="https://phet.colorado.edu/en/simulation/energy-skate-park-basics"> PhET Simulations Energy Skate Park </a>. In this simulation, the skater will follow a track at a velocity based on its translational kinetic energy. As with most basic conservation of energy simulations, rotational kinetic energy (kinetic energy from rotating objects) is ignored. </p>
 
 <h2> Physics </h2>
-<p> The physics behind the program is pretty simple to understand. The total energy in a system will always remain the same. This total energy is comprised of potential energy (based on object height), kinetic energy (based on object velocity), and thermal energy (based on static friction resisting object motion). The simulation stores the total energy of the system before the object moves. From then on, it figures out the potential energy based on object height and the thermal energy based on the object's angle of motion and distance traveled--both of which are approximations based on the object's previous position and current position. The simulation uses this information to determine the object's kinetic energy, and from that, its velocity. This velocity and the equation of the track is used to determine the object's future position. </p>
+<p> The physics behind the program is pretty simple to understand. The total energy in a system will always remain the same. This total energy is comprised of potential energy (based on object height), kinetic energy (based on object velocity), and thermal energy (based on object angle of motion and total distance traveled). The simulation stores the total energy of the system before the object moves. From then on, it figures out the potential energy (based on object height) and the thermal energy based on the object's angle of motion and distance traveled (found by approximating using the object's previous position and current position). The simulation uses this information to determine the object's kinetic energy, and from that, its velocity. This velocity and the equation of the track is used to determine the object's future position. </p>
 
 <h2> Features </h2>
 <p> The user can manually:
@@ -28,14 +28,14 @@ Jacqueline Xu and Asim Kapparova
 
 <h2> Unresolved Bugs </h2>
 <p>
-	UNDER CONSTRUCTION
+	<ul>
+		<li>the skater doesn't follow the line 100% because everything is approximated </li>
+	</ul>
 </p>
 
 <h2> How To Compile/Run </h2>
 <p> In Terminal, type the following:
 	<ol>
-	  <li>javac Skater.java </li>
-	  <li>javac Bar.java </li>
 	  <li>javac Sim.java </li>
 	  <li>java Sim </li>
 	</ol>

@@ -23,13 +23,13 @@ public class Sim extends JFrame{
     private JTabbedPane tabbedPane;
     private JPanel barsPage;
     private JPanel valsPage;
-    private Skater y = new Skater(41.0,186.0,11.0);
+    //private Skater y = new Skater(40.0,185.0,10.0);
     private String imgSkaterJPG = "images/skater.jpg"; 
     private Image img;  // this is a BufferedImage object
-    private Skater circle = new Skater(40.0,185.0,10.0);
+    private Skater circle = new Skater(10, 15, 10);
     
 
-    public Sim() { //change!!
+    public Sim() {
 	setTitle("Conservation of Energy: AsimulaXuon");
 	// add JLabel coordinates skater
         setSize(1000,600);
@@ -42,22 +42,22 @@ public class Sim extends JFrame{
 	JButton move  = new JButton("Go");
 	//	move.addActionListener(this);
 	move.setActionCommand("Go");
-        m = new JTextField(10);
+	move.setBackground(new Color(000,075,025));
+    m = new JTextField(10);
 	m.setText("50.0");
 	g = new JTextField(10);
 	g.setText("9.81");
 	c = new JTextField(10);
 	c.setText("0.0");
-        mlab = new JLabel("Mass of Skater (kg)");
+    mlab = new JLabel("Mass of Skater (kg)");
 	glab = new JLabel("Gravitational Acceleration (m/s^2)");
-        clab = new JLabel("Coefficient of Friction");
+    clab = new JLabel("Coefficient of Friction");
 	tabbedPane = new JTabbedPane();
-        barsPage=new JPanel();
-        valsPage=new JPanel();
-	tabbedPane.addTab("Bar Graph",barsPage);
- 	tabbedPane.addTab("Values", valsPage);
+    barsPage=new JPanel(new SpringLayout);
+    valsPage=new JPanel(new GridLayout(0,1));
+	tabbedPane.addTab("Energy Graph",barsPage);
+ 	tabbedPane.addTab("Skater Values", valsPage);
 	pane.add(move);
-	
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
@@ -97,9 +97,6 @@ public class Sim extends JFrame{
 	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
-
-	circle = new Skater(10, 15, 5);
-	circle.setMotion(3.0, 6.0);
     }
 
     public void paint(Graphics g) {
@@ -113,9 +110,6 @@ public class Sim extends JFrame{
 	gground.fillRect(0,520,600,80);
 	QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
     	((Graphics2D)g).draw(curve);
-	/*Graphics2D circle = (Graphics2D) g;
-	circle.drawOval((int)(y.getPosX()+y.getVelX()/100),(int)(y.getPosY()+y.getVelY()/100),10,10);
-	y.setPosition(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100); */
 	circle.paint(g);
 	if((circle.x() < 0) || (circle.x() > framewidth))
 	  circle.setMotion(-circle.xMotion(), circle.yMotion());
@@ -149,33 +143,85 @@ public class Sim extends JFrame{
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
 		    double mass = Double.parseDouble(m.getText());
-		    y.setMass(mass);
+		    circle.setMass(mass);
 		    double grav = Double.parseDouble(g.getText());
-		    y.setGravity(grav);
+		    circle.setGravity(grav);
 		    double coeff = Double.parseDouble(c.getText());
-		    y.setCoeff(coeff);
+		    circle.setCoeff(coeff);
 		    Vector<Double> temp = new Vector<Double>(2);
-		    temp.add(0.0); //values?
-		    temp.add(0.0); //values?
+			temp.clear();
+		    temp.add(circle.getPosX()); //values?
+		    temp.add(circle.getPosY()); //values?
 		    repaint();
-		    y.setHeight();
-		    y.setPotEnergy();
-		    circle.moveTo(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100);
-		    y.setPosition(y.getPosX()+y.getVelX()/100,y.getPosY()+y.getVelY()/100); 
-		    y.setDist(temp);
-		    y.setAngle(temp);
-		    y.setThermEnergy();
-		    y.setKinEnergy();
-		    y.setVelocity();
-		    System.out.println("Angle: " + y.getAngle());
-		    System.out.println("Position: " + y.getPosX() + ", " + y.getPosY());
-		    System.out.println("Velocity: " + y.getVelX() + ", " + y.getVelY());
-		    System.out.println("Height: " + y.geHeight());
-		    System.out.println("Potential Energy: " + y.getPotEnergy());
-		    System.out.println("Kinetic Energy: " + y.getKinEnergy());
-		    System.out.println("Thermal Energy: " + y.getThermEnergy());
-		    System.out.println("Total Energy: " + y.getTotEnergy());
-		    System.out.println("");
+			double newxcor = circle.getPosX()+circle.getVelX()/100;
+			double newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
+		    circle.moveTo(newxcor,newycor);
+		    circle.setPosition(newxcor,newycor); 
+		    circle.setHeight();
+		    circle.setPotEnergy();
+		    circle.setDist(temp);
+		    circle.setAngle(temp);
+		    circle.setThermEnergy();
+		    circle.setKinEnergy();
+		    circle.setVelocity();/*
+		    double mass = Double.parseDouble(m.getText());
+		    circle.setMass(mass);
+		    double grav = Double.parseDouble(g.getText());
+		    circle.setGravity(grav);
+		    double coeff = Double.parseDouble(c.getText());
+		    circle.setCoeff(coeff);
+		    Vector<Double> temp = new Vector<Double>(2);
+			System.out.println("Angle: " + circle.getAngle());
+		    System.out.println("Position: " + circle.getPosX() + ", " + circle.getPosY());
+		    System.out.println("Velocity: " + circle.getVelX() + ", " + circle.getVelY());
+		    System.out.println("Height: " + circle.geHeight());
+		    System.out.println("Potential Energy: " + circle.getPotEnergy());
+		    System.out.println("Kinetic Energy: " + circle.getKinEnergy());
+		    System.out.println("Thermal Energy: " + circle.getThermEnergy());
+		    System.out.println("Total Energy: " + circle.getTotEnergy());
+		    
+			temp.clear();
+		    temp.add(circle.getPosX()); //values?
+		    temp.add(circle.getPosY()); //values?
+		    repaint();
+		    circle.setHeight();
+		    circle.setPotEnergy();
+		    circle.moveTo(circle.getPosX()+circle.getVelX()/100,circle.getPosY()+circle.getVelY()/100);
+		    circle.setPosition(circle.getPosX()+circle.getVelX()/100,circle.getPosY()+circle.getVelY()/100); 
+		    circle.setDist(temp);
+		    circle.setAngle(temp);
+		    circle.setThermEnergy();
+		    circle.setKinEnergy();
+		    circle.setVelocity();
+		    System.out.println(temp);*/
+			System.out.println("Angle: " + circle.getAngle()*180/Math.PI);
+		    System.out.println("Position: " + circle.getPosX() + ", " + circle.getPosY());
+		    System.out.println("Velocity: " + circle.getVelX() + ", " + circle.getVelY());
+		    System.out.println("Height: " + circle.geHeight());
+		    System.out.println("Potential Energy: " + circle.getPotEnergy());
+		    System.out.println("Kinetic Energy: " + circle.getKinEnergy());
+		    System.out.println("Thermal Energy: " + circle.getThermEnergy());
+		    System.out.println("Total Energy: " + circle.getTotEnergy());
+			System.out.println("");
+		    JLabel poslab = new JLabel("Position: (" + circle.getPosX() + ", " + circle.getPosY()+ ")");
+		    JLabel vellab = new JLabel("Velocity: " + circle.getVelX() + ", " + circle.getVelY()); //change into just magnitude velocity;
+			JLabel dislab = new JLabel("Distance: "+ circle.getDist());
+			JLabel anglab = new JLabel("Angle: "+ circle.getAngle());
+		    JLabel heilab = new JLabel("Height: " + circle.geHeight());
+		    JLabel potlab = new JLabel("Potential Energy: " + circle.getPotEnergy());
+		    JLabel kinlab = new JLabel("Kinetic Energy: " + circle.getKinEnergy());
+		    JLabel thelab = new JLabel("Thermal Energy: " + circle.getThermEnergy());
+		    JLabel totlab = new JLabel("Total Energy: " + circle.getTotEnergy());
+			valsPage.removeAll();
+			valsPage.add(poslab);
+			valsPage.add(vellab);
+			valsPage.add(dislab);
+			valsPage.add(anglab);
+			valsPage.add(heilab);
+			valsPage.add(potlab);
+			valsPage.add(kinlab);
+			valsPage.add(thelab);
+			valsPage.add(totlab);
 		}
 	    };
 	new Timer(delay, taskPerformer).start();
@@ -184,8 +230,7 @@ public class Sim extends JFrame{
     public static void main(String[] args){
 	Sim z = new Sim();
         z.setVisible(true);
-        
-	   z.updateGame();
+	    z.updateGame();
 	
     }
 }

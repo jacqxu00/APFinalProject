@@ -19,37 +19,46 @@ public class Skater{
     private Vector<Double> position = new Vector<Double>(2);
     private Vector<Double> velocity = new Vector<Double>(2);
     private Rectangle location;
-    private Color color;
+    private Color color = new Color(200,0,0);
 
 
     public Skater(double x, double y, double r){
 	mass = 50.0;
 	gravity = 9.81;
 	coeff = 0;
-	position.add(x);
-	position.add(y);
+	position.add(40.0);
+	position.add(180.0);
 	px = x;
 	py = y;
 	setHeight();
 	dist = 0;
+	setTotEnergy();
+	position.clear();
+	position.add(40.1);
+	position.add(-1 * (320.0/62500)*Math.pow(40.1 - 290,2)+500);
+	velocity.add(0.0);
+	velocity.add(0.0);
+    Vector<Double> temp = new Vector<Double>(2);
+	temp.clear();
+    temp.add(40.0);
+    temp.add(185.0);
+	setDist(temp);
+	setAngle(temp);
+	setHeight();
 	setPotEnergy();
-        thermalE = 0;
-        setTotEnergy();
-	position.set(1,186.1);
-	setPotEnergy();
+	thermalE = 0;
         setKinEnergy();
-	angle = 17*Math.PI/9;
+		setVelocity();
 	double vel = Math.sqrt((2 * this.kineticE)/this.mass);
         velocity.add(Math.cos(angle) * vel);
 	velocity.add(Math.sin(angle) * vel);
 	location = new Rectangle((int)(x-r), (int)(y-r), (int)(2*r),(int)( 2*r));
-	color = Color.red;
     }
-
-    public void setMotion(double newX, double newY){
-	position.set(0,newX);
-	position.set(1,newY);
-    }
+	
+	public void setMotion(double newX, double newY){
+		position.set(0,newX);
+		position.set(1,newY);
+	    }
 
     public double getMass(){
 	return this.mass;
@@ -64,7 +73,7 @@ public class Skater{
     }
     
     public void setHeight() {
-	double ans = 520 - position.get(1);
+	double ans = 510 - position.get(1);
 	this.height = ans;
     }
 
@@ -100,12 +109,15 @@ public class Skater{
 
     public void setAngle(Vector<Double> old) {
 	double ans;
+	/*if (old.get(1)-this.position.get(1) < 0.01 || old.get(1)-this.position.get(1) > -0.01) {
+		ans = this.angle + Math.PI;
+	}*/
         if ((old.get(0) - this.position.get(0)) <= 0 && (old.get(1) - this.position.get(1)) <= 0) {
 	    ans = 2*Math.PI - Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
 	    this.angle = ans;
 	}
 	if ((old.get(0) - this.position.get(0)) <= 0 && (old.get(1) - this.position.get(1)) > 0) {
-	    ans = Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
+	    ans = Math.atan((-1 * (old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0))));
 	    this.angle = ans;
 	}
 	if ((old.get(0) - this.position.get(0)) > 0 && (old.get(1) - this.position.get(1)) <= 0) {
@@ -113,7 +125,7 @@ public class Skater{
 	    this.angle = ans;
 	}
 	if ((old.get(0) - this.position.get(0)) > 0 && (old.get(1) - this.position.get(1)) <= 0) {
-	    ans = Math.PI + Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
+	    ans = Math.PI + Math.atan((-1 * (old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0))));
 	    this.angle = ans;
 	}
     }
@@ -169,7 +181,7 @@ public class Skater{
     }
 
     public void setVelocity() {
-	double vel = Math.sqrt((2 * this.kineticE)/this.mass);
+	double vel = Math.sqrt((20 * this.kineticE)/this.mass);
 	this.velocity.set(0,Math.cos(angle) * vel);
 	this.velocity.set(1,-1 * Math.sin(angle) * vel); //1?
     }
