@@ -15,6 +15,7 @@ Jacqueline Xu and Asim Kapparova
 	  <li>edit the acceleration by gravity </li>
 	  <li>edit the coefficient of friction </li>
 	  <li>pause/play the simulation </li>
+	  <li>reset the simulation </li>
 	</ul>
 </p>
 <p> The simulation will:
