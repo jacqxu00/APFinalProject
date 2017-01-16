@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 
-public class Sim extends JFrame{
+public class Sim extends JFrame implements ActionListener{
 
     public static final int framewidth = 1000;
     public static final int frameheight = 600;
@@ -28,6 +28,10 @@ public class Sim extends JFrame{
     private Image img;  // this is a BufferedImage object
     private Skater circle = new Skater(10, 15, 10);
     SpringLayout layout = new SpringLayout();
+	private double newxcor;
+	private double newycor;
+	private ButtonGroup group = new ButtonGroup();
+	private String groupcmd = "Track 1";
 	
     public Sim() {
 	setup();
@@ -42,53 +46,44 @@ public class Sim extends JFrame{
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = getContentPane(); 
 	pane.setLayout(layout);
-	JRadioButton option1 = new JRadioButton("Option 1");
-	option1.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-		    repaint(); //ASIM not sure if this is correct also these are radio buttons, is there a way that java knows these three are connected or it already knows idk also how do you make default option 1
-		}
-	    });
-	option1.setActionCommand("Opt2");
-	JRadioButton option2 = new JRadioButton("Option 2");
-	option2.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-		    repaint(); //ASIM not sure if this is correct
-		}
-	    });
-	option2.setActionCommand("Opt3");
-	JRadioButton option3 = new JRadioButton("Option 3");
-	option3.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-		    repaint(); //ASIM not sure if this is correct
-		}
-	    });
-	option3.setActionCommand("Opt1");
+	JRadioButton option1 = new JRadioButton("Track 1");
+	option1.addActionListener(this);
+	option1.setActionCommand("Track 1");
+	option1.setSelected(true);
+	JRadioButton option2 = new JRadioButton("Track 2");
+	option2.addActionListener(this);
+	option2.setActionCommand("Track 2");
+	JRadioButton option3 = new JRadioButton("Track 3");
+	option3.addActionListener(this);
+	option3.setActionCommand("Track 3");
+	group.add(option1);
+	group.add(option2);
+	group.add(option3);
+	/*System.out.println(group.getSelection().getActionCommand());
+	option1.addActionListener(new ActionListener() {  
+	       public void actionPerformed(ActionEvent e) {
+	           groupcmd = group.getSelection().getActionCommand();
+	           }    
+	     });  
+		 option2.addActionListener(new ActionListener() {  
+		        public void actionPerformed(ActionEvent e) {
+		            groupcmd = group.getSelection().getActionCommand();
+		            }  
+		      });  
+			  option3.addActionListener(new ActionListener() {  
+			         public void actionPerformed(ActionEvent e) {
+			             groupcmd = group.getSelection().getActionCommand();
+			             }  
+			       });  */
+	groupcmd = group.getSelection().getActionCommand();
 	JButton move  = new JButton("Go");
-	move.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-		    updateGame(); //ASIM this makes the thing go faster if its already moving
-		}
-	    });
+	move.addActionListener(this);
 	move.setActionCommand("Go");
 	JButton stop = new JButton("Stop");
-	stop.addActionListener(new ActionListener(){
-		@Override
-		public void actionPerformed(ActionEvent e){
-		    stop();
-		}
-	    });
+	stop.addActionListener(this);
 	stop.setActionCommand("Stop");
 	JButton reset = new JButton("Reset");
-	reset.addActionListener(new ActionListener(){
-		@Override
-		public void actionPerformed(ActionEvent e){
-		    reset();
-		}
-	    });
+	reset.addActionListener(this);
 	reset.setActionCommand("Reset");
 	m = new JTextField(10);
 	m.setText("50.0");
@@ -127,21 +122,15 @@ public class Sim extends JFrame{
 	  pane.add(cslider);*/
 	pane.add(move);
 	pane.add(stop);
-	mlab = new JLabel("Mass of Skater (kg)");
-	glab = new JLabel("Gravitational Acceleration (m/s^2)");
-	clab = new JLabel("Coefficient of Friction");
-	tabbedPane = new JTabbedPane();
-	barsPage=new JPanel();
-	valsPage=new JPanel(new GridLayout(0,1));
-	tabbedPane.addTab("Energy Graph",barsPage);
-	tabbedPane.addTab("Skater Values", valsPage);
-	pane.add(move);
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
 	pane.add(g);
 	pane.add(clab);
 	pane.add(c);
+	pane.add(option1);
+	pane.add(option2);
+	pane.add(option3);
 	pane.add(tabbedPane);
 	layout.putConstraint(SpringLayout.WEST, move, 800, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, move, 15, SpringLayout.NORTH, pane);
@@ -179,7 +168,7 @@ public class Sim extends JFrame{
 	layout.putConstraint(SpringLayout.NORTH, option1, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, option2, 2, SpringLayout.EAST, option1);
 	layout.putConstraint(SpringLayout.NORTH, option2, 10, SpringLayout.NORTH, pane);
-	layout.putConstraint(SpringLayout.WEST, option3, 2, SpringLayout.WEST, option2);
+	layout.putConstraint(SpringLayout.WEST, option3, 2, SpringLayout.EAST, option2);
 	layout.putConstraint(SpringLayout.NORTH, option3, 10, SpringLayout.NORTH, pane);
     }
 
@@ -192,7 +181,22 @@ public class Sim extends JFrame{
 	// ASIM this is called by reset button and by stop button and when the values are incorrect in the text boxes (reset button steps shown above) please write this
     }
 	
+	public void actionPerformed(ActionEvent e){
+		String event = e.getActionCommand();
+		if (event.equals("Stop")) {
+			stop();
+		}
+		if (event.equals("Go")) {
+			updateGame();
+		}
+		if (event.equals("Reset")) {
+			reset();
+		}
+	}
 	
+	public void itemStateChanged(ItemEvent e) {
+		reset();
+	}
     
     public void paint(Graphics g) {
 	// ASIM i added this if statement but not show if it will work, so it might cause problems when you later test it, youll have to see. i cant test it rn bc the stop/play are not working
@@ -220,22 +224,18 @@ public class Sim extends JFrame{
 	    gground.setColor(new Color(000,075,025));
 	    gground.drawRect(0,520,600,80);
 	    gground.fillRect(0,520,600,80);
-	    if (event.equals("Opt1")){
+		if (groupcmd.equals("Track 1")){
 		QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
 		((Graphics2D)g).draw(curve);
-	    }
-	    if (event.equals("Opt2")){ //ASIM we'll have to change this 
-		//ALSO ERROR message because event is defined as 'String event = evt.getActionCommand();' see below
-		// BUT the problem is that the getActionCommand can only be written in a actionPerformed method, i think
-		// i was thinking of moving the actionperformed and actionlistener part from down there up to here, but im not sure if the timer needs it so i didnt want to touch it
-		//im gonna leave that error for you
+		}
+		if (groupcmd.equals("Track 2")){
 		QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
 		((Graphics2D)g).draw(curve);
-	    }
-	    if (event.equals("Opt3")){ //ASIM we'll have to change this
+		}
+		if (groupcmd.equals("Track 3")){
 		QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
 		((Graphics2D)g).draw(curve);
-	    }
+		}
 	    circle.paint(g);
 	    if((circle.x() < 0) || (circle.x() > framewidth))
 		circle.setMotion(-circle.xMotion(), circle.yMotion());
@@ -266,7 +266,7 @@ public class Sim extends JFrame{
 	int delay = 50; 
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
-		    String event = evt.getActionCommand();
+			groupcmd = group.getSelection().getActionCommand();
 		    double mass = Double.parseDouble(m.getText());
 		    circle.setMass(mass);
 		    double grav = Double.parseDouble(g.getText());
@@ -278,24 +278,21 @@ public class Sim extends JFrame{
 		    temp.add(circle.getPosX());
 		    temp.add(circle.getPosY());
 		    repaint();
-		    if (event.equals("Opt1")){
-			double newxcor = circle.getPosX()+circle.getVelX()/100;
-			double newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
+			if (groupcmd.equals("Track 1")){
+				newxcor = circle.getPosX()+circle.getVelX()/100;
+				newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
+			}
+			if (groupcmd.equals("Track 2")){
+				newxcor = circle.getPosX()+circle.getVelX()/100;
+				newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
+			}
+			if (groupcmd.equals("Track 3")){
+				newxcor = circle.getPosX()+circle.getVelX()/100;
+				newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
+			}
 			circle.moveTo(newxcor,newycor);
 			circle.setPosition(newxcor,newycor); 
-		    }
-		    if (event.equals("Opt2")){ //ASIM we'll have to change this
-			double newxcor = circle.getPosX()+circle.getVelX()/100;
-			double newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
-			circle.moveTo(newxcor,newycor);
-			circle.setPosition(newxcor,newycor); 
-		    }
-		    if (event.equals("Opt3")){ //ASIM we'll have to change this
-			double newxcor = circle.getPosX()+circle.getVelX()/100;
-			double newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
-			circle.moveTo(newxcor,newycor);
-			circle.setPosition(newxcor,newycor); 
-		    }
+			circle.setTotEnergy();
 		    circle.setHeight();
 		    circle.setPotEnergy();
 		    circle.setDist(temp);
@@ -303,44 +300,6 @@ public class Sim extends JFrame{
 		    circle.setThermEnergy();
 		    circle.setKinEnergy();
 		    circle.setVelocity();
-		    /*double mass = Double.parseDouble(m.getText());
-		      circle.setMass(mass);
-		      double grav = Double.parseDouble(g.getText());
-		      circle.setGravity(grav);
-		      double coeff = Double.parseDouble(c.getText());
-		      circle.setCoeff(coeff);
-		      Vector<Double> temp = new Vector<Double>(2);
-		      <<<<<<< HEAD
-		      System.out.println("Angle: " + circle.getAngle());
-		      =======
-		      System.out.println("Angle: " + circle.getAngle());
-		      >>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
-		      System.out.println("Position: " + circle.getPosX() + ", " + circle.getPosY());
-		      System.out.println("Velocity: " + circle.getVelX() + ", " + circle.getVelY());
-		      System.out.println("Height: " + circle.geHeight());
-		      System.out.println("Potential Energy: " + circle.getPotEnergy());
-		      System.out.println("Kinetic Energy: " + circle.getKinEnergy());
-		      System.out.println("Thermal Energy: " + circle.getThermEnergy());
-		      System.out.println("Total Energy: " + circle.getTotEnergy());
-		      <<<<<<< HEAD
-		      temp.clear();
-		      =======
-		    
-		      temp.clear();
-		      >>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
-		      temp.add(circle.getPosX()); //values?
-		      temp.add(circle.getPosY()); //values?
-		      repaint();
-		      circle.setHeight();
-		      circle.setPotEnergy();
-		      circle.moveTo(circle.getPosX()+circle.getVelX()/100,circle.getPosY()+circle.getVelY()/100);
-		      circle.setPosition(circle.getPosX()+circle.getVelX()/100,circle.getPosY()+circle.getVelY()/100); 
-		      circle.setDist(temp);
-		      circle.setAngle(temp);
-		      circle.setThermEnergy();
-		      circle.setKinEnergy();
-		      circle.setVelocity();
-		      System.out.println(temp);*/
 		    System.out.println("Angle: " + circle.getAngle()*180/Math.PI);
 		    System.out.println("Position: " + circle.getPosX() + ", " + circle.getPosY());
 		    System.out.println("Velocity: " + circle.getVelX() + ", " + circle.getVelY());

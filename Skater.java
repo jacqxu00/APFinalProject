@@ -41,7 +41,7 @@ public class Skater{
 	Vector<Double> temp = new Vector<Double>(2);
 	temp.clear();
 	temp.add(40.0);
-	temp.add(185.0);
+	temp.add(180.0);
 	setDist(temp);
 	setAngle(temp);
 	setHeight();
@@ -201,7 +201,7 @@ public class Skater{
     }
 
     public void setTotEnergy() {
-	double ans = mass * gravity * height;
+	double ans = mass * gravity * 340;
 	this.totalE = ans;
     }
     
