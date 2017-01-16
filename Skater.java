@@ -38,38 +38,28 @@ public class Skater{
 	position.add(-1 * (320.0/62500)*Math.pow(40.1 - 290,2)+500);
 	velocity.add(0.0);
 	velocity.add(0.0);
-<<<<<<< HEAD
 	Vector<Double> temp = new Vector<Double>(2);
 	temp.clear();
 	temp.add(40.0);
 	temp.add(185.0);
-=======
-    Vector<Double> temp = new Vector<Double>(2);
-	temp.clear();
-    temp.add(40.0);
-    temp.add(185.0);
->>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
 	setDist(temp);
 	setAngle(temp);
 	setHeight();
 	setPotEnergy();
 	thermalE = 0;
         setKinEnergy();
-<<<<<<< HEAD
 	setVelocity();
-=======
-		setVelocity();
->>>>>>> 537c7d45b00fbfda6a72574b9fe09aec3b234519
+	setVelocity();
 	double vel = Math.sqrt((2 * this.kineticE)/this.mass);
         velocity.add(Math.cos(angle) * vel);
 	velocity.add(Math.sin(angle) * vel);
 	location = new Rectangle((int)(x-r), (int)(y-r), (int)(2*r),(int)( 2*r));
     }
 	
-	public void setMotion(double newX, double newY){
-		position.set(0,newX);
-		position.set(1,newY);
-	    }
+    public void setMotion(double newX, double newY){
+	position.set(0,newX);
+	position.set(1,newY);
+    }
 
     public double getMass(){
 	return this.mass;
@@ -121,8 +111,8 @@ public class Skater{
     public void setAngle(Vector<Double> old) {
 	double ans;
 	/*if (old.get(1)-this.position.get(1) < 0.01 || old.get(1)-this.position.get(1) > -0.01) {
-		ans = this.angle + Math.PI;
-	}*/
+	  ans = this.angle + Math.PI;
+	  }*/
         if ((old.get(0) - this.position.get(0)) <= 0 && (old.get(1) - this.position.get(1)) <= 0) {
 	    ans = 2*Math.PI - Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
 	    this.angle = ans;
@@ -163,8 +153,8 @@ public class Skater{
     }
 
     public int radius(){    
-    return location.width/2;
-}
+	return location.width/2;
+    }
 
     public int x(){
 	return location.x + radius();
@@ -247,36 +237,36 @@ public class Skater{
     }
 
     /* public void paint(Graphics g){
-	URL imgUrl = getClass().getClassLoader().getResource(imgSkaterJPG);
-	if (imgUrl == null) {
-	    System.err.println("Couldn't find file: " + imgSkaterJPG);
-	} else {
-	    try {
-		img = ImageIO.read(imgUrl);
-	    } catch (IOException ex) {
-		ex.printStackTrace();
-	    }
-	}
-	g.drawImage(img, 40, 190, null);
-	this.position.set(0,this.position.get(0)+this.velocity.get(0)/100);
-	this.position.set(0,this.position.get(1)+this.velocity.get(1)/100);
-	}
-    public void paint3 (Graphics g){
-	Graphics2D circle = (Graphics2D) g;
-	circle.drawOval(40,190,10,10);
-	this.position.set(0,this.position.get(0)+this.velocity.get(0)/100);
-	this.position.set(0,this.position.get(1)+this.velocity.get(1)/100);
-	}*/
+       URL imgUrl = getClass().getClassLoader().getResource(imgSkaterJPG);
+       if (imgUrl == null) {
+       System.err.println("Couldn't find file: " + imgSkaterJPG);
+       } else {
+       try {
+       img = ImageIO.read(imgUrl);
+       } catch (IOException ex) {
+       ex.printStackTrace();
+       }
+       }
+       g.drawImage(img, 40, 190, null);
+       this.position.set(0,this.position.get(0)+this.velocity.get(0)/100);
+       this.position.set(0,this.position.get(1)+this.velocity.get(1)/100);
+       }
+       public void paint3 (Graphics g){
+       Graphics2D circle = (Graphics2D) g;
+       circle.drawOval(40,190,10,10);
+       this.position.set(0,this.position.get(0)+this.velocity.get(0)/100);
+       this.position.set(0,this.position.get(1)+this.velocity.get(1)/100);
+       }*/
     
     public static void main (String[] args){
 	/*	Skater skater = new Skater();
-	System.out.println(skater.getMass());
-	System.out.println(skater.getGravity());
-	System.out.println(skater.getCoeff());
-	System.out.println(skater.getTotEnergy());
-	System.out.println(skater.getPotEnergy());
-	System.out.println(skater.getKinEnergy());
-	System.out.println(skater.getThermEnergy());
-	System.out.println(skater.getVelocity());*/
+		System.out.println(skater.getMass());
+		System.out.println(skater.getGravity());
+		System.out.println(skater.getCoeff());
+		System.out.println(skater.getTotEnergy());
+		System.out.println(skater.getPotEnergy());
+		System.out.println(skater.getKinEnergy());
+		System.out.println(skater.getThermEnergy());
+		System.out.println(skater.getVelocity());*/
     }
 }

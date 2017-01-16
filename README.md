@@ -29,7 +29,7 @@ Jacqueline Xu and Asim Kapparova
 <h2> Unresolved Bugs </h2>
 <p>
 	<ul>
-		<li>the skater doesn't follow the line 100% because everything is approximated </li>
+		<li>the user can not change any of the text inputs or any of the other settings (options) after the skater has started moving, user must reset then change </li>
 	</ul>
 </p>
 
