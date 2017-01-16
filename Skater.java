@@ -258,15 +258,5 @@ public class Skater{
        this.position.set(0,this.position.get(1)+this.velocity.get(1)/100);
        }*/
     
-    public static void main (String[] args){
-	/*	Skater skater = new Skater();
-		System.out.println(skater.getMass());
-		System.out.println(skater.getGravity());
-		System.out.println(skater.getCoeff());
-		System.out.println(skater.getTotEnergy());
-		System.out.println(skater.getPotEnergy());
-		System.out.println(skater.getKinEnergy());
-		System.out.println(skater.getThermEnergy());
-		System.out.println(skater.getVelocity());*/
-    }
+
 }
