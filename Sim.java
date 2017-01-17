@@ -71,7 +71,11 @@ public class Sim extends JFrame implements ActionListener{
 				newxcor = circle.getPosX()+circle.getVelX()/100;
 				newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
 =======
+<<<<<<< HEAD
 >>>>>>> 5c1c97ad9d6aee9fbc2aaf6238ceeaa922ce9fca
+=======
+>>>>>>> origin/master
+>>>>>>> 3d874efe7f8a412ca844ed8ee0c85848b91e6676
 		    repaint();
 		    if (groupcmd.equals("Track 1")){
 			newxcor = circle.getPosX()+circle.getVelX()/100;
@@ -193,6 +197,16 @@ public class Sim extends JFrame implements ActionListener{
 	glab = new JLabel("Gravitational Acceleration (m/s^2)");
 	clab = new JLabel("Coefficient of Friction");
 	valsPage=new JPanel(new BorderLayout());
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	mlab = new JLabel("Mass of Skater (kg)");
+	glab = new JLabel("Gravitational Acceleration (m/s^2)");
+	clab = new JLabel("Coefficient of Friction");
+>>>>>>> origin/asim
+=======
+>>>>>>> origin/asim
+>>>>>>> origin/master
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
@@ -320,7 +334,11 @@ public class Sim extends JFrame implements ActionListener{
 	    }
 	circle.paint(g);
 =======
+<<<<<<< HEAD
 >>>>>>> 5c1c97ad9d6aee9fbc2aaf6238ceeaa922ce9fca
+=======
+>>>>>>> origin/master
+>>>>>>> 3d874efe7f8a412ca844ed8ee0c85848b91e6676
 		QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
 		((Graphics2D)g).draw(curve);
 	    }
