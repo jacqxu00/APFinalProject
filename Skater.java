@@ -233,30 +233,7 @@ public class Skater{
 
     public void paint(Graphics g){
 	//g.setColor(color);
-	g.fillOval(location.x, location.y,location.width,location.height);
+	g.fillOval(location.x, location.y, location.width,location.height);
     }
-
-    /* public void paint(Graphics g){
-       URL imgUrl = getClass().getClassLoader().getResource(imgSkaterJPG);
-       if (imgUrl == null) {
-       System.err.println("Couldn't find file: " + imgSkaterJPG);
-       } else {
-       try {
-       img = ImageIO.read(imgUrl);
-       } catch (IOException ex) {
-       ex.printStackTrace();
-       }
-       }
-       g.drawImage(img, 40, 190, null);
-       this.position.set(0,this.position.get(0)+this.velocity.get(0)/100);
-       this.position.set(0,this.position.get(1)+this.velocity.get(1)/100);
-       }
-       public void paint3 (Graphics g){
-       Graphics2D circle = (Graphics2D) g;
-       circle.drawOval(40,190,10,10);
-       this.position.set(0,this.position.get(0)+this.velocity.get(0)/100);
-       this.position.set(0,this.position.get(1)+this.velocity.get(1)/100);
-       }*/
-    
 
 }
