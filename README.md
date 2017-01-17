@@ -30,10 +30,11 @@ Jacqueline Xu and Asim Kapparova
 <h2> Unresolved Bugs </h2>
 <p>
 	<ul>
-		<li>sometimes the GUI misplaces the components for no reason, the user just has to re-run the program</li>
-		<li>the user also cannot change tracks after the skater has started moving. We tried to remedy this by putting the buttons where Java will repaint it, so it "disappears," but the user technically still can press the button</li>
-		<li>if there is friction present, the skater will hit 0 velocity before it reaches the ground level. We couldn't figure this out because thermal energy has to be scaled perfectly so that it equals the total energy when potential and kinetic energy equals zero. This requires a level of calculus thtat we could not figure out, unfortunately. So at one point, the skater will disappear because it has an undefined value for velocity.</li>
-		<li>the Values panel only updates upon mouse click</li>
+		<li>sometimes the GUI misplaces the components for no reason, the user just has to close and re-run the program</li>
+		<li>the user also should not be able change tracks after the skater has started moving. We tried to remedy this by putting the buttons where Java will repaint it, so it "disappears," but the user technically still can press the buttons</li>
+		<li>if there is friction present, the skater will hit 0 velocity before it reaches the ground level. We couldn't figure this out because thermal energy has to be scaled perfectly so that it equals the total energy when potential and kinetic energy equals zero. Unfortunately, this requires a level of calculus thtat we could not figure out. So at a certain point, the skater will disappear because it has an undefined value for velocity. This is also a problem if you change friction after the skater has left its original location because thermal energy is calculated by adding it energy each step of the way. </li>
+		<li>after the user presses "Reset," all the values are set back to their defaults, and they can't be unchanged.</li>
+		<li>We couldn't get the error messages to show up for some reason.</li>
 	</ul>
 </p>
 
@@ -47,5 +48,13 @@ Jacqueline Xu and Asim Kapparova
 
 <h2> How To Use Program </h2>
 <p> 
-UNDER CONSTRUCTION
+	<ol>
+	  <li>Choose a track</li>
+	  <li>Set your variables</li>
+	  <li>Mass must be > 0, Gravity must be > 0, and Coefficient must be > 0 and < 1 </li>
+	  <li>Press Go</li>
+	  <li>Change your variables however you like while the code is running</li>
+	  <li>Press Stop to pause</li>
+	  <li>Press Reset to start the skater at its original location</li>
+	</ol>
 </p>
