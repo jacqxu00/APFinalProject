@@ -43,6 +43,35 @@ public class Sim extends JFrame implements ActionListener{
 		    temp.clear();
 		    temp.add(circle.getPosX());
 		    temp.add(circle.getPosY());
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+			groupcmd = group.getSelection().getActionCommand();
+			repaint();
+		    if (groupcmd.equals("Track 1")){
+				newxcor = circle.getPosX()+circle.getVelX()/100;
+				if (circle.getPosX() > 580) {
+					stop();
+					circle = null;
+				}
+				else if (circle.getPosX() > 300) {
+					newycor = 500;
+				}
+				else {
+					newycor = Math.sqrt(108900.0-(1089.0/625)*Math.pow(newxcor-290,2))+170;
+				}
+		    }
+		    if (groupcmd.equals("Track 2")){
+				if (circle.getPosX() > 300 && circle.getVelX() < 1.5 && circle.getAngle() < Math.PI/2 && circle.getAngle() > 0) {
+					circle.setVelX(circle.getVelX()*-1);
+				}
+				if (circle.getPosX() < 300 && circle.getVelX() > -1.5 && circle.getAngle() < Math.PI && circle.getAngle() > Math.PI/2) {
+					circle.setVelX(circle.getVelX()*-1);
+				}
+				newxcor = circle.getPosX()+circle.getVelX()/100;
+				newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
+=======
+>>>>>>> origin/master
 		    repaint();
 		    if (groupcmd.equals("Track 1")){
 			newxcor = circle.getPosX()+circle.getVelX()/100;
@@ -145,7 +174,6 @@ public class Sim extends JFrame implements ActionListener{
 	  }  
 	  });  */
 	groupcmd = group.getSelection().getActionCommand();
-	option3.setActionCommand("Opt1");
 	JButton move  = new JButton("Go");
 	move.addActionListener(this);
 	move.setActionCommand("Go");
@@ -165,6 +193,16 @@ public class Sim extends JFrame implements ActionListener{
 	glab = new JLabel("Gravitational Acceleration (m/s^2)");
 	clab = new JLabel("Coefficient of Friction");
 	valsPage=new JPanel(new BorderLayout());
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	mlab = new JLabel("Mass of Skater (kg)");
+	glab = new JLabel("Gravitational Acceleration (m/s^2)");
+	clab = new JLabel("Coefficient of Friction");
+>>>>>>> origin/asim
+=======
+>>>>>>> origin/asim
+>>>>>>> origin/master
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
@@ -274,6 +312,25 @@ public class Sim extends JFrame implements ActionListener{
 	    gground.drawRect(0,520,600,80);
 	    gground.fillRect(0,520,600,80);
 	    if (groupcmd.equals("Track 1")){
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+		    Graphics2D arc = (Graphics2D) g;
+		    arc.drawArc(40, -160, 520, 680, 180,90);
+=======
+<<<<<<< HEAD
+		QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
+		((Graphics2D)g).draw(curve);
+>>>>>>> c96e5d09ab3923e3009d5d265aafa5cdc59f283f
+	    }
+	    if (groupcmd.equals("Track 2")){
+			gground.setColor(new Color(000,000,000));
+			QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
+			((Graphics2D)g).draw(curve);
+	    }
+	circle.paint(g);
+=======
+>>>>>>> origin/master
 		QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
 		((Graphics2D)g).draw(curve);
 	    }
