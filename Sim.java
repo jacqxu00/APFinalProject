@@ -5,13 +5,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.Timer;
-import java.io.IOException;
-import java.net.URL;
-import javax.imageio.ImageIO;
 
 public class Sim extends JFrame implements ActionListener{
+<<<<<<< HEAD
     public static final int framewidth = 1000;
     public static final int frameheight = 600;
+=======
+>>>>>>> origin/asim
     private Container pane;
     private JTextField m;
     private JTextField g;
@@ -20,12 +20,15 @@ public class Sim extends JFrame implements ActionListener{
     private JLabel glab;
     private JLabel clab;
     private JTabbedPane tabbedPane;
-    private JPanel barsPage;
     private JPanel valsPage;
+<<<<<<< HEAD
     //private Skater y = new Skater(40.0,185.0,10.0);
     private String imgSkaterJPG = "images/skater.jpg"; 
     private Image img;  // this is a BufferedImage object
     private Skater circle = new Skater();
+=======
+    private Skater circle = new Skater(10, 15, 10);
+>>>>>>> origin/asim
     SpringLayout layout = new SpringLayout();
     private String event;
     private Timer timer;
@@ -42,6 +45,7 @@ public class Sim extends JFrame implements ActionListener{
 		System.out.println("skater");
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
+<<<<<<< HEAD
 			if (m.getText().length()>0) {
 				double mass = Double.parseDouble(m.getText());
 				circle.setMass(mass);
@@ -64,10 +68,20 @@ public class Sim extends JFrame implements ActionListener{
 				circle.setCoeff(0);
 			}
 			circle.setTotEnergy();
+=======
+		    event = evt.getActionCommand();
+		    double mass = Double.parseDouble(m.getText());
+		    circle.setMass(mass);
+		    double grav = Double.parseDouble(g.getText());
+		    circle.setGravity(grav);
+		    double coeff = Double.parseDouble(c.getText());
+		    circle.setCoeff(coeff);
+>>>>>>> origin/asim
 		    Vector<Double> temp = new Vector<Double>(2);
 		    temp.clear();
 		    temp.add(circle.getPosX());
 		    temp.add(circle.getPosY());
+<<<<<<< HEAD
 			groupcmd = group.getSelection().getActionCommand();
 			repaint();
 		    if (groupcmd.equals("Track 1")){
@@ -92,6 +106,20 @@ public class Sim extends JFrame implements ActionListener{
 				}
 				newxcor = circle.getPosX()+circle.getVelX()/100;
 				newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
+=======
+		    repaint();
+		    if (groupcmd.equals("Track 1")){
+			newxcor = circle.getPosX()+circle.getVelX()/100;
+			newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
+		    }
+		    if (groupcmd.equals("Track 2")){
+			newxcor = circle.getPosX()+circle.getVelX()/100;
+			newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
+		    }
+		    if (groupcmd.equals("Track 3")){
+			newxcor = circle.getPosX()+circle.getVelX()/100;
+			newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
+>>>>>>> origin/asim
 		    }
 		    circle.moveTo(newxcor,newycor);
 		    circle.setPosition(newxcor,newycor); 
@@ -134,11 +162,16 @@ public class Sim extends JFrame implements ActionListener{
 			System.out.println("update");
 		}
 	    };
+<<<<<<< HEAD
 		System.out.println("setup");
 	timer = new Timer(5, taskPerformer);
+=======
+	timer = new Timer(50, taskPerformer);
+
+	
+>>>>>>> origin/asim
 	setTitle("Conservation of Energy: AsimulaXuon");
-	// add JLabel coordinates skater
-	setSize(1000,600);
+	setSize(1500,600);
 	setVisible(true);
 	setLocation(100,100);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -188,6 +221,7 @@ public class Sim extends JFrame implements ActionListener{
 	mlab = new JLabel("Mass of Skater (kg)");
 	glab = new JLabel("Gravitational Acceleration (m/s^2)");
 	clab = new JLabel("Coefficient of Friction");
+<<<<<<< HEAD
 	tabbedPane = new JTabbedPane();
 	barsPage=new JPanel();
 	valsPage=new JPanel(new GridLayout(0,1));
@@ -225,6 +259,12 @@ public class Sim extends JFrame implements ActionListener{
 	valsPage=new JPanel(new GridLayout(0,1));
 	tabbedPane.addTab("Energy Graph",barsPage);
 	tabbedPane.addTab("Skater Values", valsPage);
+=======
+	valsPage=new JPanel(new BorderLayout());
+	mlab = new JLabel("Mass of Skater (kg)");
+	glab = new JLabel("Gravitational Acceleration (m/s^2)");
+	clab = new JLabel("Coefficient of Friction");
+>>>>>>> origin/asim
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
@@ -233,12 +273,25 @@ public class Sim extends JFrame implements ActionListener{
 	pane.add(c);
 	pane.add(option1);
 	pane.add(option2);
+<<<<<<< HEAD
 	pane.add(tabbedPane);
 	layout.putConstraint(SpringLayout.WEST, move, 910, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, move, 15, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, stop, 910, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, stop, 5, SpringLayout.SOUTH, move);
 	layout.putConstraint(SpringLayout.WEST, reset, 910, SpringLayout.WEST, pane);
+=======
+	pane.add(option3);
+	pane.add(move);
+	pane.add(stop);
+	pane.add(reset);
+	pane.add(valsPage);
+	layout.putConstraint(SpringLayout.WEST, move, 810, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, move, 15, SpringLayout.NORTH, pane);
+	layout.putConstraint(SpringLayout.WEST, stop, 810, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, stop, 5, SpringLayout.SOUTH, move);
+	layout.putConstraint(SpringLayout.WEST, reset, 810, SpringLayout.WEST, pane);
+>>>>>>> origin/asim
 	layout.putConstraint(SpringLayout.NORTH, reset, 5, SpringLayout.SOUTH, stop);
 	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
@@ -264,14 +317,18 @@ public class Sim extends JFrame implements ActionListener{
 	layout.putConstraint(SpringLayout.NORTH, clab, 15, SpringLayout.SOUTH, g);
 	layout.putConstraint(SpringLayout.WEST, c, 610, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, c, 5, SpringLayout.SOUTH, clab);
+<<<<<<< HEAD
 	layout.putConstraint(SpringLayout.WEST, tabbedPane, 600, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, tabbedPane, 15, SpringLayout.SOUTH, c);
 	layout.putConstraint(SpringLayout.EAST, tabbedPane, 20, SpringLayout.EAST, pane);
 	layout.putConstraint(SpringLayout.SOUTH, tabbedPane, 20, SpringLayout.SOUTH, pane);
+=======
+>>>>>>> origin/asim
 	layout.putConstraint(SpringLayout.WEST, option1, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, option1, 10, SpringLayout.NORTH, pane);
 	layout.putConstraint(SpringLayout.WEST, option2, 0, SpringLayout.EAST, option1);
 	layout.putConstraint(SpringLayout.NORTH, option2, 10, SpringLayout.NORTH, pane);
+<<<<<<< HEAD
     }
 
     public void reset(){
@@ -319,6 +376,21 @@ public class Sim extends JFrame implements ActionListener{
 	    System.out.println("circ Total Energy: " + circle.getTotEnergy());
 		setup();
 		repaint();
+=======
+	layout.putConstraint(SpringLayout.WEST, option3, 2, SpringLayout.EAST, option2);
+	layout.putConstraint(SpringLayout.NORTH, option3, 10, SpringLayout.NORTH, pane);
+	layout.putConstraint(SpringLayout.WEST, valsPage, 950, SpringLayout.EAST, pane);
+	layout.putConstraint(SpringLayout.NORTH, valsPage, 40, SpringLayout.NORTH, pane);
+    }
+
+    public void reset(){
+	timer.stop();
+	getContentPane().removeAll();
+	//getContentPane().revalidate();
+	//getContentPane().repaint();
+       	//setup1();
+	//setup2();
+>>>>>>> origin/asim
     }
 	
     public void stop(){
@@ -327,10 +399,31 @@ public class Sim extends JFrame implements ActionListener{
 	
     public void actionPerformed(ActionEvent e){
 	String event = e.getActionCommand();
+<<<<<<< HEAD
 	System.out.println("event");
 	System.out.println(Double.parseDouble(m.getText()) <= 0 || Double.parseDouble(g.getText()) <= 0 || Double.parseDouble(c.getText()) >= 1 || Double.parseDouble(c.getText()) < 0);
 	if (Double.parseDouble(m.getText()) <= 0 || Double.parseDouble(g.getText()) <= 0 || Double.parseDouble(c.getText()) >= 1 || Double.parseDouble(c.getText()) < 0) {
 	    stop();
+=======
+	if (event.equals("Stop")) {
+	    stop();
+	}
+	if (event.equals("Go")) {
+	    updateGame();
+	}
+	if (event.equals("Reset")) {
+	    reset();
+	}
+    }
+	
+    public void itemStateChanged(ItemEvent e) {
+	reset();
+    }
+    
+    public void paint(Graphics g) {
+	if (circle.getMass() <= 0 || circle.getGravity() <= 0 || circle.getCoeff() < 0) {
+	    reset();
+>>>>>>> origin/asim
 	    JLabel error1 = new JLabel("Incorrect Values Error:");
 	    JLabel error2 = new JLabel("Please make sure that mass > 0, gravity > 0, and 0 <= coefficient < 1.");
 	    JLabel error3 = new JLabel("To continue, please press reset and input correct values, then press start.");
@@ -367,8 +460,14 @@ public class Sim extends JFrame implements ActionListener{
 	    gground.drawRect(0,520,600,80);
 	    gground.fillRect(0,520,600,80);
 	    if (groupcmd.equals("Track 1")){
+<<<<<<< HEAD
 		    Graphics2D arc = (Graphics2D) g;
 		    arc.drawArc(40, -160, 520, 680, 180,90);
+=======
+<<<<<<< HEAD
+		QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
+		((Graphics2D)g).draw(curve);
+>>>>>>> c96e5d09ab3923e3009d5d265aafa5cdc59f283f
 	    }
 	    if (groupcmd.equals("Track 2")){
 			gground.setColor(new Color(000,000,000));
@@ -376,23 +475,24 @@ public class Sim extends JFrame implements ActionListener{
 			((Graphics2D)g).draw(curve);
 	    }
 	circle.paint(g);
+=======
+		QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
+		((Graphics2D)g).draw(curve);
+	    }
+	    if (groupcmd.equals("Track 2")){
+		QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
+		((Graphics2D)g).draw(curve);
+	    }
+	    if (groupcmd.equals("Track 3")){
+		QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
+		((Graphics2D)g).draw(curve);
+	    }
+	}
+	circle.paint(g);
+	Bar bar = new Bar(circle.getTotEnergy(), circle.getPotEnergy(), circle.getKinEnergy(), circle.getThermEnergy());
+	bar.paint(g);
+>>>>>>> origin/asim
     }
-
-    /* public void paint2 (Graphics g){
-       URL imgUrl = getClass().getClassLoader().getResource(imgSkaterJPG);
-       if (imgUrl == null) {
-       System.err.println("Couldn't find file: " + imgSkaterJPG);
-       } else {
-       try {
-       img = ImageIO.read(imgUrl);
-       } catch (IOException ex) {
-       ex.printStackTrace();
-       }
-       }
-       g.drawImage(img, 40, 190, null);
-       y.position.set(0,y.position.get(0)+y.velocity.get(0)/100);
-       y.position.set(0,y.position.get(1)+y.velocity.get(1)/100);
-       }*/
 
     public void updateGame(){
 	timer.start();
