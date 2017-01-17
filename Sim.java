@@ -16,7 +16,7 @@ public class Sim extends JFrame implements ActionListener{
     private JLabel clab;
     private JTabbedPane tabbedPane;
     private JPanel valsPage;
-    private Skater circle = new Skater(10, 15, 10);
+    private Skater circle = new Skater();
     SpringLayout layout = new SpringLayout();
     private String event;
     private Timer timer;

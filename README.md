@@ -30,7 +30,10 @@ Jacqueline Xu and Asim Kapparova
 <h2> Unresolved Bugs </h2>
 <p>
 	<ul>
-		<li>the user can not change any of the text inputs or any of the other settings (options) after the skater has started moving, user must reset then change </li>
+		<li>sometimes the GUI misplaces the components for no reason, the user just has to re-run the program</li>
+		<li>the user also cannot change tracks after the skater has started moving. We tried to remedy this by putting the buttons where Java will repaint it, so it "disappears," but the user technically still can press the button</li>
+		<li>if there is friction present, the skater will hit 0 velocity before it reaches the ground level. We couldn't figure this out because thermal energy has to be scaled perfectly so that it equals the total energy when potential and kinetic energy equals zero. This requires a level of calculus thtat we could not figure out, unfortunately. So at one point, the skater will disappear because it has an undefined value for velocity.</li>
+		<li>the Values panel only updates upon mouse click</li>
 	</ul>
 </p>
 
