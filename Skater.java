@@ -22,39 +22,43 @@ public class Skater{
     private Color color = new Color(200,0,0);
 
 
-    public Skater(double x, double y, double r){
-	mass = 50.0;
-	gravity = 9.81;
-	coeff = 0;
-	position.add(40.0);
-	position.add(180.0);
-	px = x;
-	py = y;
-	setHeight();
-	dist = 0;
-	setTotEnergy();
-	position.clear();
-	position.add(40.1);
-	position.add(-1 * (320.0/62500)*Math.pow(40.1 - 290,2)+500);
-	velocity.add(0.0);
-	velocity.add(0.0);
-	Vector<Double> temp = new Vector<Double>(2);
-	temp.clear();
-	temp.add(40.0);
-	temp.add(180.0);
-	setDist(temp);
-	setAngle(temp);
-	setHeight();
-	setPotEnergy();
-	thermalE = 0;
-        setKinEnergy();
-	setVelocity();
-	setVelocity();
-	double vel = Math.sqrt((2 * this.kineticE)/this.mass);
-        velocity.add(Math.cos(angle) * vel);
-	velocity.add(Math.sin(angle) * vel);
-	location = new Rectangle((int)(x-r), (int)(y-r), (int)(2*r),(int)( 2*r));
+    public Skater(){
+		reset();
     }
+	
+	public void reset() {
+		mass = 50.0;
+		gravity = 9.81;
+		coeff = 0;
+		position.add(45.0);
+		position.add(-1 * (320.0/62500)*Math.pow(45.0 - 290,2)+500);
+		px = 100;
+		py = 510;
+		setHeight();
+		dist = 0;
+		setTotEnergy();
+		position.clear();
+		position.add(45.1);
+		position.add(-1 * (320.0/62500)*Math.pow(45.1 - 290,2)+500);
+		velocity.add(0.0);
+		velocity.add(0.0);
+		Vector<Double> temp = new Vector<Double>(2);
+		temp.clear();
+		temp.add(45.0);
+		temp.add(-1 * (320.0/62500)*Math.pow(45.0 - 290,2)+500);
+		setDist(temp);
+		setAngle(temp);
+		setHeight();
+		setPotEnergy();
+		thermalE = 0;
+	        setKinEnergy();
+		setVelocity();
+		setVelocity();
+		double vel = Math.sqrt((2 * this.kineticE)/this.mass);
+	        velocity.add(Math.cos(angle) * vel);
+		velocity.add(Math.sin(angle) * vel);
+		location = new Rectangle((int)(90), (int)(500), (int)(20),(int)( 20));
+	}
 	
     public void setMotion(double newX, double newY){
 	position.set(0,newX);
@@ -100,7 +104,7 @@ public class Skater{
     
     public double setDist(Vector<Double> old) {
 	double ans = Math.sqrt(Math.pow(old.get(0)-this.position.get(0),2)+Math.pow(old.get(1)-this.position.get(1),2));
-	dist += ans;
+	dist += ans/80;
 	return ans;
     }
 
@@ -113,7 +117,7 @@ public class Skater{
 	/*if (old.get(1)-this.position.get(1) < 0.01 || old.get(1)-this.position.get(1) > -0.01) {
 	  ans = this.angle + Math.PI;
 	  }*/
-        if ((old.get(0) - this.position.get(0)) <= 0 && (old.get(1) - this.position.get(1)) <= 0) {
+    if ((old.get(0) - this.position.get(0)) <= 0 && (old.get(1) - this.position.get(1)) <= 0) {
 	    ans = 2*Math.PI - Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
 	    this.angle = ans;
 	}
@@ -125,7 +129,7 @@ public class Skater{
 	    ans = Math.PI - Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
 	    this.angle = ans;
 	}
-	if ((old.get(0) - this.position.get(0)) > 0 && (old.get(1) - this.position.get(1)) <= 0) {
+	if ((old.get(0) - this.position.get(0)) > 0 && (old.get(1) - this.position.get(1)) > 0) {
 	    ans = Math.PI + Math.atan((-1 * (old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0))));
 	    this.angle = ans;
 	}
@@ -147,7 +151,11 @@ public class Skater{
     public double getVelX(){
 	return this.velocity.get(0);
     }
-
+	
+    public void setVelX(double v){
+	this.velocity.set(0,v);
+    }
+	
     public double getVelY(){
 	return this.velocity.get(1);
     }
@@ -182,7 +190,7 @@ public class Skater{
     }
 
     public void setVelocity() {
-	double vel = Math.sqrt((20 * this.kineticE)/this.mass);
+	double vel = Math.sqrt((this.kineticE)/this.mass);
 	this.velocity.set(0,Math.cos(angle) * vel);
 	this.velocity.set(1,-1 * Math.sin(angle) * vel); //1?
     }
@@ -201,7 +209,7 @@ public class Skater{
     }
 
     public void setTotEnergy() {
-	double ans = mass * gravity * 340;
+	double ans = mass * gravity * 335;
 	this.totalE = ans;
     }
     
@@ -210,8 +218,8 @@ public class Skater{
     }
     
     public void setThermEnergy() {
-	double ans = coeff * mass * gravity * Math.cos(angle) * dist;
-	this.thermalE = ans;
+	double ans = coeff * mass * gravity * Math.abs(Math.cos(angle)) * dist/500;
+	this.thermalE += ans;
     }
 
     public double getKinEnergy() {
