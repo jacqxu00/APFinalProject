@@ -261,9 +261,12 @@ public class Sim extends JFrame implements ActionListener{
 	tabbedPane.addTab("Skater Values", valsPage);
 =======
 	valsPage=new JPanel(new BorderLayout());
+<<<<<<< HEAD
 	mlab = new JLabel("Mass of Skater (kg)");
 	glab = new JLabel("Gravitational Acceleration (m/s^2)");
 	clab = new JLabel("Coefficient of Friction");
+>>>>>>> origin/asim
+=======
 >>>>>>> origin/asim
 	pane.add(mlab);
 	pane.add(m);
