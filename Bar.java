@@ -21,31 +21,31 @@ public class Bar extends JFrame{
     public void paint(Graphics g){
 	Graphics2D gbackground = (Graphics2D) g;
 	gbackground.setColor(Color.white);
-	gbackground.drawRect(610,210,300,400);
-	gbackground.fillRect(610,210,300,400); 
+	gbackground.drawRect(601,0,320,320);
+	gbackground.fillRect(601,0,320,320); 
 
 	Graphics2D totbar = (Graphics2D) g;
 	totbar.setColor(new Color(000,075,025));
-	totbar.drawRect(850,(int)(520-totheight),40,(int)totheight);
-	totbar.fillRect(850,(int)(520-totheight),40,(int)totheight);
+	totbar.drawRect(830,(int)(310-totheight),60,(int)totheight);
+	totbar.fillRect(830,(int)(310-totheight),60,(int)totheight);
 	
 	Graphics2D potbar = (Graphics2D) g;
 	potbar.setColor(new Color(000,075,025));
-	potbar.drawRect(800,(int)(520-potheight),40,(int)potheight);
-	potbar.fillRect(800,(int)(520-potheight),40,(int)potheight);
+	potbar.drawRect(760,(int)(310-potheight),60,(int)potheight);
+	potbar.fillRect(760,(int)(310-potheight),60,(int)potheight);
 	
 	Graphics2D kinbar = (Graphics2D) g;
 	kinbar.setColor(new Color(000,075,025));
-	kinbar.drawRect(750,(int)(520-kinheight),40,(int)kinheight);
-	kinbar.fillRect(750,(int)(520-kinheight),40,(int)kinheight);
+	kinbar.drawRect(690,(int)(310-kinheight),60,(int)kinheight);
+	kinbar.fillRect(690,(int)(310-kinheight),60,(int)kinheight);
 	
 	Graphics2D thermbar = (Graphics2D) g;
 	thermbar.setColor(new Color(000,075,025));
-	thermbar.drawRect(700,(int)(520-thermheight),40,(int)thermheight);
-	thermbar.fillRect(700,(int)(520-thermheight),40,(int)thermheight);
+	thermbar.drawRect(620,(int)(310-thermheight),60,(int)thermheight);
+	thermbar.fillRect(620,(int)(310-thermheight),60,(int)thermheight);
 	
 	Graphics2D bottomline = (Graphics2D) g;
 	bottomline.setColor(new Color(000,000,000));
-	bottomline.drawLine(610,520,910,520);
+	bottomline.drawLine(610,310,910,310);
     }
 }

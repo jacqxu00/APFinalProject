@@ -14,8 +14,6 @@ public class Sim extends JFrame implements ActionListener{
     private JLabel mlab;
     private JLabel glab;
     private JLabel clab;
-    private JTabbedPane tabbedPane;
-    private JPanel valsPage;
     private Skater circle = new Skater();
     SpringLayout layout = new SpringLayout();
     private String event;
@@ -24,6 +22,12 @@ public class Sim extends JFrame implements ActionListener{
     private double newycor;
     private ButtonGroup group = new ButtonGroup();
     private String groupcmd = "Track 1";
+    private Bar bar = new Bar(0,0,0,0);
+    private JRadioButton option1 = new JRadioButton("Track 1");
+    private JRadioButton option2 = new JRadioButton("Track 2");
+    private double mass;
+    private double grav;
+    private double coeff;
 	
     public Sim() {
 	setup();
@@ -32,60 +36,61 @@ public class Sim extends JFrame implements ActionListener{
     public void setup(){
 	ActionListener taskPerformer = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
-		    event = evt.getActionCommand();
+		    if (m.getText().length()>0) {
+			double mass = Double.parseDouble(m.getText());
+			circle.setMass(mass);
+		    }
+		    else {
+			circle.setMass(50.0);
+		    }
+		    if (g.getText().length()>0) {
+			double grav = Double.parseDouble(g.getText());
+			circle.setGravity(grav);
+		    }
+		    else {
+			circle.setGravity(9.81);
+		    }
+		    if (c.getText().length()>0) {
+			double coeff = Double.parseDouble(c.getText());
+			circle.setCoeff(coeff);
+		    }
+		    else {
+			circle.setCoeff(0);
+		    }
+		    Vector<Double> temp = new Vector<Double>(2);
 		    double mass = Double.parseDouble(m.getText());
 		    circle.setMass(mass);
 		    double grav = Double.parseDouble(g.getText());
 		    circle.setGravity(grav);
 		    double coeff = Double.parseDouble(c.getText());
 		    circle.setCoeff(coeff);
-		    Vector<Double> temp = new Vector<Double>(2);
+		    circle.setTotEnergy();
 		    temp.clear();
 		    temp.add(circle.getPosX());
 		    temp.add(circle.getPosY());
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-			groupcmd = group.getSelection().getActionCommand();
-			repaint();
-		    if (groupcmd.equals("Track 1")){
-				newxcor = circle.getPosX()+circle.getVelX()/100;
-				if (circle.getPosX() > 580) {
-					stop();
-					circle = null;
-				}
-				else if (circle.getPosX() > 300) {
-					newycor = 500;
-				}
-				else {
-					newycor = Math.sqrt(108900.0-(1089.0/625)*Math.pow(newxcor-290,2))+170;
-				}
-		    }
-		    if (groupcmd.equals("Track 2")){
-				if (circle.getPosX() > 300 && circle.getVelX() < 1.5 && circle.getAngle() < Math.PI/2 && circle.getAngle() > 0) {
-					circle.setVelX(circle.getVelX()*-1);
-				}
-				if (circle.getPosX() < 300 && circle.getVelX() > -1.5 && circle.getAngle() < Math.PI && circle.getAngle() > Math.PI/2) {
-					circle.setVelX(circle.getVelX()*-1);
-				}
-				newxcor = circle.getPosX()+circle.getVelX()/100;
-				newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
-=======
-<<<<<<< HEAD
->>>>>>> 5c1c97ad9d6aee9fbc2aaf6238ceeaa922ce9fca
-=======
->>>>>>> origin/master
->>>>>>> 3d874efe7f8a412ca844ed8ee0c85848b91e6676
+		    groupcmd = group.getSelection().getActionCommand();
 		    repaint();
+		    bar = new Bar(circle.getTotEnergy(), circle.getPotEnergy(), circle.getKinEnergy(), circle.getThermEnergy());
+		    bar.repaint();
 		    if (groupcmd.equals("Track 1")){
 			newxcor = circle.getPosX()+circle.getVelX()/100;
-			newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
+			if (circle.getPosX() > 580) {
+			    stop();
+			}
+			else if (circle.getPosX() > 300) {
+			    newycor = 500;
+			}
+			else {
+			    newycor = Math.sqrt(108900.0-(1089.0/625)*Math.pow(newxcor-290,2))+170;
+			}
 		    }
 		    if (groupcmd.equals("Track 2")){
-			newxcor = circle.getPosX()+circle.getVelX()/100;
-			newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
-		    }
-		    if (groupcmd.equals("Track 3")){
+			if (circle.getPosX() > 300 && circle.getVelX() < 1.5 && circle.getAngle() < Math.PI/2 && circle.getAngle() > 0) {
+			    circle.setVelX(circle.getVelX()*-1);
+			}
+			if (circle.getPosX() < 300 && circle.getVelX() > -1.5 && circle.getAngle() < Math.PI && circle.getAngle() > Math.PI/2) {
+			    circle.setVelX(circle.getVelX()*-1);
+			}
 			newxcor = circle.getPosX()+circle.getVelX()/100;
 			newycor = -1 * (320.0/62500)*Math.pow(newxcor - 290,2)+500;
 		    }
@@ -102,81 +107,29 @@ public class Sim extends JFrame implements ActionListener{
 		    System.out.println("Position: " + circle.getPosX() + ", " + circle.getPosY());
 		    System.out.println("Velocity: " + circle.getVelX() + ", " + circle.getVelY());
 		    System.out.println("Height: " + circle.geHeight());
+		    System.out.println("Distance: "+ circle.getDist());
 		    System.out.println("Potential Energy: " + circle.getPotEnergy());
 		    System.out.println("Kinetic Energy: " + circle.getKinEnergy());
 		    System.out.println("Thermal Energy: " + circle.getThermEnergy());
 		    System.out.println("Total Energy: " + circle.getTotEnergy());
-		    System.out.println("");
-		    JLabel poslab = new JLabel("Position: (" + circle.getPosX() + ", " + circle.getPosY()+ ")");
-		    JLabel vellab = new JLabel("Velocity: " + circle.getVelX() + ", " + circle.getVelY()); //change into just magnitude velocity;
-		    JLabel dislab = new JLabel("Distance: "+ circle.getDist());
-		    JLabel anglab = new JLabel("Angle: "+ circle.getAngle());
-		    JLabel heilab = new JLabel("Height: " + circle.geHeight());
-		    JLabel potlab = new JLabel("Potential Energy: " + circle.getPotEnergy());
-		    JLabel kinlab = new JLabel("Kinetic Energy: " + circle.getKinEnergy());
-		    JLabel thelab = new JLabel("Thermal Energy: " + circle.getThermEnergy());
-		    JLabel totlab = new JLabel("Total Energy: " + circle.getTotEnergy());
-		    valsPage.removeAll();
-		    valsPage.add(poslab);
-		    valsPage.add(vellab);
-		    valsPage.add(dislab);
-		    valsPage.add(anglab);
-		    valsPage.add(heilab);
-		    valsPage.add(potlab);
-		    valsPage.add(kinlab);
-		    valsPage.add(thelab);
-		    valsPage.add(totlab);
-		    valsPage.removeAll();
-		    valsPage.add(poslab);
-		    valsPage.add(vellab);
-		    valsPage.add(dislab);
-		    valsPage.add(anglab);
-		    valsPage.add(heilab);
-		    valsPage.add(potlab);
-		    valsPage.add(kinlab);
-		    valsPage.add(thelab);
-		    valsPage.add(totlab);
 		}
 	    };
-	timer = new Timer(50, taskPerformer);
-
+	timer = new Timer(5, taskPerformer);
 	
 	setTitle("Conservation of Energy: AsimulaXuon");
-	setSize(1500,600);
+	setSize(920,600);
 	setVisible(true);
-	setLocation(100,100);
+	setLocation(0,0);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = getContentPane(); 
 	pane.setLayout(layout);
-	JRadioButton option1 = new JRadioButton("Track 1");
 	option1.addActionListener(this);
 	option1.setActionCommand("Track 1");
 	option1.setSelected(true);
-	JRadioButton option2 = new JRadioButton("Track 2");
 	option2.addActionListener(this);
 	option2.setActionCommand("Track 2");
-	JRadioButton option3 = new JRadioButton("Track 3");
-	option3.addActionListener(this);
-	option3.setActionCommand("Track 3");
 	group.add(option1);
 	group.add(option2);
-	group.add(option3);
-	/*System.out.println(group.getSelection().getActionCommand());
-	  option1.addActionListener(new ActionListener() {  
-	  public void actionPerformed(ActionEvent e) {
-	  groupcmd = group.getSelection().getActionCommand();
-	  }    
-	  });  
-	  option2.addActionListener(new ActionListener() {  
-	  public void actionPerformed(ActionEvent e) {
-	  groupcmd = group.getSelection().getActionCommand();
-	  }  
-	  });  
-	  option3.addActionListener(new ActionListener() {  
-	  public void actionPerformed(ActionEvent e) {
-	  groupcmd = group.getSelection().getActionCommand();
-	  }  
-	  });  */
 	groupcmd = group.getSelection().getActionCommand();
 	JButton move  = new JButton("Go");
 	move.addActionListener(this);
@@ -190,23 +143,23 @@ public class Sim extends JFrame implements ActionListener{
 	m = new JTextField(10);
 	m.setText("50.0");
 	g = new JTextField(10);
- 	g.setText("9.81");
+	g.setText("9.81");
 	c = new JTextField(10);
 	c.setText("0.0");
 	mlab = new JLabel("Mass of Skater (kg)");
 	glab = new JLabel("Gravitational Acceleration (m/s^2)");
 	clab = new JLabel("Coefficient of Friction");
-	valsPage=new JPanel(new BorderLayout());
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-	mlab = new JLabel("Mass of Skater (kg)");
-	glab = new JLabel("Gravitational Acceleration (m/s^2)");
-	clab = new JLabel("Coefficient of Friction");
->>>>>>> origin/asim
-=======
->>>>>>> origin/asim
->>>>>>> origin/master
+	pane.add(move);
+	pane.add(stop);
+	pane.add(reset); 
+	JLabel title = new JLabel("Energy Levels");
+	JLabel tot = new JLabel("Total");
+	JLabel pot = new JLabel("Potential");
+	JLabel kin = new JLabel("Kinetic");
+	JLabel therm = new JLabel("Thermal");
+	pane.add(move);
+	pane.add(stop);
+	pane.add(reset);
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
@@ -215,58 +168,86 @@ public class Sim extends JFrame implements ActionListener{
 	pane.add(c);
 	pane.add(option1);
 	pane.add(option2);
-	pane.add(option3);
-	pane.add(move);
-	pane.add(stop);
-	pane.add(reset);
-	pane.add(valsPage);
-	layout.putConstraint(SpringLayout.WEST, move, 810, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, move, 15, SpringLayout.NORTH, pane);
-	layout.putConstraint(SpringLayout.WEST, stop, 810, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, stop, 5, SpringLayout.SOUTH, move);
-	layout.putConstraint(SpringLayout.WEST, reset, 810, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, reset, 5, SpringLayout.SOUTH, stop);
-	layout.putConstraint(SpringLayout.WEST, mlab, 10, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
-	layout.putConstraint(SpringLayout.WEST, m, 10, SpringLayout.WEST, pane);
+	pane.add(title);
+	pane.add(tot);
+	pane.add(pot);
+	pane.add(kin);
+	pane.add(therm);
+	
+	layout.putConstraint(SpringLayout.WEST, move, 845, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, move, 400, SpringLayout.NORTH, pane);
+	
+	layout.putConstraint(SpringLayout.WEST, stop, 845, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, stop, 10, SpringLayout.SOUTH, move);
+	
+	layout.putConstraint(SpringLayout.WEST, reset, 845, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, reset, 10, SpringLayout.SOUTH, stop);
+	
+	layout.putConstraint(SpringLayout.WEST, mlab, 620, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, mlab, 380, SpringLayout.NORTH, pane);
+	
+	layout.putConstraint(SpringLayout.WEST, m, 620, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, m, 10, SpringLayout.SOUTH, mlab);
-	layout.putConstraint(SpringLayout.WEST, glab, 10, SpringLayout.WEST, pane);
+	
+	layout.putConstraint(SpringLayout.WEST, glab, 620, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, glab, 10, SpringLayout.SOUTH, m);
-	layout.putConstraint(SpringLayout.WEST, g, 10, SpringLayout.WEST, pane);
+	
+	layout.putConstraint(SpringLayout.WEST, g, 620, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, g, 10, SpringLayout.SOUTH, glab);
-	layout.putConstraint(SpringLayout.WEST, clab, 10, SpringLayout.WEST, pane);
+	
+	layout.putConstraint(SpringLayout.WEST, clab, 620, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, clab, 10, SpringLayout.SOUTH, g);
-	layout.putConstraint(SpringLayout.WEST, c, 10, SpringLayout.WEST, pane);
+	
+	layout.putConstraint(SpringLayout.WEST, c, 620, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, c, 10, SpringLayout.SOUTH, clab);
-	layout.putConstraint(SpringLayout.WEST, mlab, 610, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, mlab, 10, SpringLayout.NORTH, pane);
-	layout.putConstraint(SpringLayout.WEST, m, 610, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, m, 5, SpringLayout.SOUTH, mlab);
-	layout.putConstraint(SpringLayout.WEST, glab, 610, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, glab, 15, SpringLayout.SOUTH, m);
-	layout.putConstraint(SpringLayout.WEST, g, 610, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, g, 5, SpringLayout.SOUTH, glab);
-	layout.putConstraint(SpringLayout.WEST, clab, 610, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, clab, 15, SpringLayout.SOUTH, g);
-	layout.putConstraint(SpringLayout.WEST, c, 610, SpringLayout.WEST, pane);
-	layout.putConstraint(SpringLayout.NORTH, c, 5, SpringLayout.SOUTH, clab);
+		
+
+	//track options
 	layout.putConstraint(SpringLayout.WEST, option1, 10, SpringLayout.WEST, pane);
 	layout.putConstraint(SpringLayout.NORTH, option1, 10, SpringLayout.NORTH, pane);
-	layout.putConstraint(SpringLayout.WEST, option2, 2, SpringLayout.EAST, option1);
+	layout.putConstraint(SpringLayout.WEST, option2, 0, SpringLayout.EAST, option1);
 	layout.putConstraint(SpringLayout.NORTH, option2, 10, SpringLayout.NORTH, pane);
-	layout.putConstraint(SpringLayout.WEST, option3, 2, SpringLayout.EAST, option2);
-	layout.putConstraint(SpringLayout.NORTH, option3, 10, SpringLayout.NORTH, pane);
-	layout.putConstraint(SpringLayout.WEST, valsPage, 950, SpringLayout.EAST, pane);
-	layout.putConstraint(SpringLayout.NORTH, valsPage, 40, SpringLayout.NORTH, pane);
-    }
 
+	//bar graph
+	layout.putConstraint(SpringLayout.WEST, title, 720, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, title, 350, SpringLayout.NORTH, pane);
+	layout.putConstraint(SpringLayout.WEST, therm, 625, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, therm, 320, SpringLayout.NORTH, pane);
+	layout.putConstraint(SpringLayout.WEST, kin, 700, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, kin, 320, SpringLayout.NORTH, pane);
+	layout.putConstraint(SpringLayout.WEST, pot, 765, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, pot, 320, SpringLayout.NORTH, pane);
+	layout.putConstraint(SpringLayout.WEST, tot, 848, SpringLayout.WEST, pane);
+	layout.putConstraint(SpringLayout.NORTH, tot, 320, SpringLayout.NORTH, pane);
+    }
+		
+		
     public void reset(){
-	timer.stop();
-	getContentPane().removeAll();
-	//getContentPane().revalidate();
-	//getContentPane().repaint();
-       	//setup1();
-	//setup2();
+	stop();
+	circle.reset();
+	if (m.getText().length()>0) {
+	    double mass = Double.parseDouble(m.getText());
+	    circle.setMass(mass);
+	}
+	if (g.getText().length()>0) {
+	    double grav = Double.parseDouble(g.getText());
+	    circle.setGravity(grav);
+	}
+	if (c.getText().length()>0) {
+	    double coeff = Double.parseDouble(c.getText());
+	    circle.setCoeff(coeff);
+	}
+	System.out.println("circ Angle: " + circle.getAngle()*180/Math.PI);
+	System.out.println("circ Position: " + circle.getPosX() + ", " + circle.getPosY());
+	System.out.println("circ Velocity: " + circle.getVelX() + ", " + circle.getVelY());
+	System.out.println("circ Height: " + circle.geHeight());
+	System.out.println("circ Distance: "+ circle.getDist());
+	System.out.println("circ Potential Energy: " + circle.getPotEnergy());
+	System.out.println("circ Kinetic Energy: " + circle.getKinEnergy());
+	System.out.println("circ Thermal Energy: " + circle.getThermEnergy());
+	System.out.println("circ Total Energy: " + circle.getTotEnergy());
+	setup();
+	repaint();
     }
 	
     public void stop(){
@@ -275,26 +256,10 @@ public class Sim extends JFrame implements ActionListener{
 	
     public void actionPerformed(ActionEvent e){
 	String event = e.getActionCommand();
-	if (event.equals("Stop")) {
-	    stop();
-	}
-	if (event.equals("Go")) {
-	    updateGame();
-	}
-	if (event.equals("Reset")) {
-	    reset();
-	}
-    }
-	
-    public void itemStateChanged(ItemEvent e) {
-	reset();
-    }
-    
-    public void paint(Graphics g) {
 	if (circle.getMass() <= 0 || circle.getGravity() <= 0 || circle.getCoeff() < 0) {
 	    reset();
 	    JLabel error1 = new JLabel("Incorrect Values Error:");
-	    JLabel error2 = new JLabel("Please make sure that mass > 0, gravity > 0, and coefficient >= 0.");
+	    JLabel error2 = new JLabel("Please make sure that mass > 0, gravity > 0, and 0 <= coefficient < 1.");
 	    JLabel error3 = new JLabel("To continue, please press reset and input correct values, then press start.");
 	    pane.add(error1);
 	    pane.add(error2);
@@ -306,53 +271,37 @@ public class Sim extends JFrame implements ActionListener{
 	    layout.putConstraint(SpringLayout.WEST, error3, 50, SpringLayout.WEST, pane);
 	    layout.putConstraint(SpringLayout.NORTH, error3, 0, SpringLayout.SOUTH, error2);
 	}
-	else {
-	    Graphics2D gsky = (Graphics2D) g;
-	    gsky.setColor(new Color(200,200,225));
-	    gsky.drawRect(0,0,600,600);
-	    gsky.fillRect(0,0,600,600);
-	    Graphics2D gground = (Graphics2D) g;
-	    gground.setColor(new Color(000,075,025));
-	    gground.drawRect(0,520,600,80);
-	    gground.fillRect(0,520,600,80);
-	    if (groupcmd.equals("Track 1")){
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-		    Graphics2D arc = (Graphics2D) g;
-		    arc.drawArc(40, -160, 520, 680, 180,90);
-=======
-<<<<<<< HEAD
-		QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
-		((Graphics2D)g).draw(curve);
->>>>>>> c96e5d09ab3923e3009d5d265aafa5cdc59f283f
-	    }
-	    if (groupcmd.equals("Track 2")){
-			gground.setColor(new Color(000,000,000));
-			QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
-			((Graphics2D)g).draw(curve);
-	    }
-	circle.paint(g);
-=======
-<<<<<<< HEAD
->>>>>>> 5c1c97ad9d6aee9fbc2aaf6238ceeaa922ce9fca
-=======
->>>>>>> origin/master
->>>>>>> 3d874efe7f8a412ca844ed8ee0c85848b91e6676
-		QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
-		((Graphics2D)g).draw(curve);
-	    }
-	    if (groupcmd.equals("Track 2")){
-		QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
-		((Graphics2D)g).draw(curve);
-	    }
-	    if (groupcmd.equals("Track 3")){
-		QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
-		((Graphics2D)g).draw(curve);
-	    }
+	else if (event.equals("Stop")) {
+	    stop();
+	}
+	else if (event.equals("Go")) {
+	    updateGame();
+	}
+	else if (event.equals("Reset")) {
+	    reset();
+	}
+    } 
+    
+    public void paint(Graphics g) {
+	System.out.println("paint");
+	Graphics2D gsky = (Graphics2D) g;
+	gsky.setColor(new Color(200,200,225));
+	gsky.drawRect(0,0,600,600);
+	gsky.fillRect(0,0,600,600);
+	Graphics2D gground = (Graphics2D) g;
+	gground.setColor(new Color(000,075,025));
+	gground.drawRect(0,520,600,80);
+	gground.fillRect(0,520,600,80);
+	if (groupcmd.equals("Track 1")){
+	    Graphics2D arc = (Graphics2D) g;
+	    arc.drawArc(40, -160, 520, 680, 180,90);
+	}
+	if (groupcmd.equals("Track 2")){
+	    gground.setColor(new Color(000,000,000));
+	    QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
+	    ((Graphics2D)g).draw(curve);
 	}
 	circle.paint(g);
-	Bar bar = new Bar(circle.getTotEnergy(), circle.getPotEnergy(), circle.getKinEnergy(), circle.getThermEnergy());
 	bar.paint(g);
     }
 
