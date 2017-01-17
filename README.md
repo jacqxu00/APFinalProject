@@ -34,7 +34,14 @@ Jacqueline Xu and Asim Kapparova
 		<li>the user also should not be able change tracks after the skater has started moving. We tried to remedy this by putting the buttons where Java will repaint it, so it "disappears," but the user technically still can press the buttons</li>
 		<li>if there is friction present, the skater will hit 0 velocity before it reaches the ground level. We couldn't figure this out because thermal energy has to be scaled perfectly so that it equals the total energy when potential and kinetic energy equals zero. Unfortunately, this requires a level of calculus thtat we could not figure out. So at a certain point, the skater will disappear because it has an undefined value for velocity. This is also a problem if you change friction after the skater has left its original location because thermal energy is calculated by adding it energy each step of the way. </li>
 		<li>after the user presses "Reset," all the values are set back to their defaults, and they can't be unchanged.</li>
+<<<<<<< HEAD
 		<li>We couldn't get the error messages to show up for some reason.</li>
+=======
+<<<<<<< HEAD
+		<li>We couldn't get the error messages to show up for some reason.</li>
+=======
+>>>>>>> 539bd9c9c26eed07f8d385fbb0eb035724eb24ea
+>>>>>>> b700b02d995aed623379cd7a70880ddc42414b83
 	</ul>
 </p>
 
@@ -51,7 +58,14 @@ Jacqueline Xu and Asim Kapparova
 	<ol>
 	  <li>Choose a track</li>
 	  <li>Set your variables</li>
+<<<<<<< HEAD
 	  <li>Mass must be > 0, Gravity must be > 0, and Coefficient must be > 0 and < 1 </li>
+=======
+<<<<<<< HEAD
+	  <li>Mass must be > 0, Gravity must be > 0, and Coefficient must be > 0 and < 1 </li>
+=======
+>>>>>>> 539bd9c9c26eed07f8d385fbb0eb035724eb24ea
+>>>>>>> b700b02d995aed623379cd7a70880ddc42414b83
 	  <li>Press Go</li>
 	  <li>Change your variables however you like while the code is running</li>
 	  <li>Press Stop to pause</li>
