@@ -165,9 +165,6 @@ public class Sim extends JFrame implements ActionListener{
 	glab = new JLabel("Gravitational Acceleration (m/s^2)");
 	clab = new JLabel("Coefficient of Friction");
 	valsPage=new JPanel(new BorderLayout());
-	mlab = new JLabel("Mass of Skater (kg)");
-	glab = new JLabel("Gravitational Acceleration (m/s^2)");
-	clab = new JLabel("Coefficient of Friction");
 	pane.add(mlab);
 	pane.add(m);
 	pane.add(glab);
