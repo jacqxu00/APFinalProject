@@ -44,7 +44,6 @@ public class Sim extends JFrame implements ActionListener{
 			if (g.getText().length()>0) {
 			    grav = (double)Double.parseDouble(g.getText());
 			    circle.setGravity(grav);
-				System.out.println("changed grav input===================================");
 			}
 			if (c.getText().length()>0) {
 			    coeff = (double)Double.parseDouble(c.getText());
@@ -127,7 +126,7 @@ public class Sim extends JFrame implements ActionListener{
 	setTitle("Conservation of Energy: AsimulaXuon");
 	setSize(920,600);
 	setVisible(true);
-	setLocation(0,0);
+	setLocation(400,50);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = getContentPane(); 
 	pane.setLayout(layout);
