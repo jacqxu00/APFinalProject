@@ -77,7 +77,7 @@ public class Skater{
     }
     
     public void setHeight() {
-	double ans = 500 - position.get(1);
+	double ans = (500 - position.get(1))*10;
 	this.height = ans;
     }
 
@@ -205,7 +205,7 @@ public class Skater{
     }
 
     public void setTotEnergy() {
-	double ans = mass * gravity * 335;
+	double ans = mass * gravity * 3350;
 	this.totalE = ans;
     }
     
@@ -214,7 +214,7 @@ public class Skater{
     }
     
     public void setThermEnergy() {
-	double ans = coeff * mass * gravity * Math.abs(Math.cos(angle)) * dist/100;
+	double ans = coeff * mass * gravity * Math.abs(Math.cos(angle)) * dist/500;
 	this.thermalE += ans;
     }
 

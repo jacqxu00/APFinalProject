@@ -28,8 +28,6 @@ public class Sim extends JFrame implements ActionListener{
     private double mass;
     private double grav;
     private double coeff;
-    JLabel error1 = new JLabel("");
-    JLabel error2 = new JLabel("");
 	
     public Sim() {
 	setup();
@@ -40,45 +38,31 @@ public class Sim extends JFrame implements ActionListener{
 		public void actionPerformed(ActionEvent evt) {
 		    try {
 			if (m.getText().length()>0) {
-			    double mass = Double.parseDouble(m.getText());
+			    mass = (double)Double.parseDouble(m.getText());
 			    circle.setMass(mass);
 			}
-			else {
-			    circle.setMass(50.0);
-			}
 			if (g.getText().length()>0) {
-			    double grav = Double.parseDouble(g.getText());
+			    grav = (double)Double.parseDouble(g.getText());
 			    circle.setGravity(grav);
-			}
-			else {
-			    circle.setGravity(9.81);
+				System.out.println("changed grav input===================================");
 			}
 			if (c.getText().length()>0) {
-			    double coeff = Double.parseDouble(c.getText());
+			    coeff = (double)Double.parseDouble(c.getText());
 			    circle.setCoeff(coeff);
 			}
-			else {
-			    circle.setCoeff(0);
-			}
-			    
-			double mass = Double.parseDouble(m.getText());
+			mass = (double)Double.parseDouble(m.getText());
 			circle.setMass(mass);
-			double grav = Double.parseDouble(g.getText());
+			grav = (double)Double.parseDouble(g.getText());
 			circle.setGravity(grav);
-			double coeff = Double.parseDouble(c.getText());
+			coeff = (double)Double.parseDouble(c.getText());
 			circle.setCoeff(coeff);
 			    
 		    }
 		    catch (NumberFormatException e){
 			stop();
-			error1.setText("Correct values,");
-			error2.setText("then Reset.");
-			pane.add(error1);
-			pane.add(error2);
-			layout.putConstraint(SpringLayout.WEST, error1, 765, SpringLayout.WEST, pane);
-			layout.putConstraint(SpringLayout.NORTH, error1, 520, SpringLayout.NORTH, pane);
-			layout.putConstraint(SpringLayout.WEST, error2, 765, SpringLayout.WEST, pane);
-			layout.putConstraint(SpringLayout.NORTH, error2, 0, SpringLayout.SOUTH, error1);
+			System.out.println("");
+			System.out.println("Input values must be in number format. Mass > 0, Gravity > 0, and 0 <= Coefficient < 1.");
+			System.out.println("");
 		    }
 		    Vector<Double> temp = new Vector<Double>(2);
 		    circle.setTotEnergy();
@@ -129,17 +113,13 @@ public class Sim extends JFrame implements ActionListener{
 		    System.out.println("Kinetic Energy: " + circle.getKinEnergy());
 		    System.out.println("Thermal Energy: " + circle.getThermEnergy());
 		    System.out.println("Total Energy: " + circle.getTotEnergy());
+			System.out.println("");
 				
 		    if (circle.getMass() <= 0 || circle.getGravity() <= 0 || circle.getCoeff() < 0 || circle.getCoeff() >= 1) {
 			stop();
-			error1.setText("Correct values,");
-			error2.setText("then Reset.");
-			pane.add(error1);
-			pane.add(error2);
-			layout.putConstraint(SpringLayout.WEST, error1, 765, SpringLayout.WEST, pane);
-			layout.putConstraint(SpringLayout.NORTH, error1, 520, SpringLayout.NORTH, pane);
-			layout.putConstraint(SpringLayout.WEST, error2, 765, SpringLayout.WEST, pane);
-			layout.putConstraint(SpringLayout.NORTH, error2, 0, SpringLayout.SOUTH, error1);
+			System.out.println("");
+			System.out.println("Input values must be in number format. Mass > 0, Gravity > 0, and 0 <= Coefficient < 1.");
+			System.out.println("");
 		    }
 		}
 	    };
@@ -248,19 +228,21 @@ public class Sim extends JFrame implements ActionListener{
 		
     public void reset(){
 	stop();
-	circle.reset();
+	circle = new Skater();
 	if (m.getText().length()>0) {
-	    double mass = Double.parseDouble(m.getText());
+	    mass = (double)Double.parseDouble(m.getText());
 	    circle.setMass(mass);
 	}
 	if (g.getText().length()>0) {
-	    double grav = Double.parseDouble(g.getText());
+	    grav = (double)Double.parseDouble(g.getText());
 	    circle.setGravity(grav);
 	}
 	if (c.getText().length()>0) {
-	    double coeff = Double.parseDouble(c.getText());
+	    coeff = (double)Double.parseDouble(c.getText());
 	    circle.setCoeff(coeff);
 	}
+	setup();
+	repaint();
 	System.out.println("circ Angle: " + circle.getAngle()*180/Math.PI);
 	System.out.println("circ Position: " + circle.getPosX() + ", " + circle.getPosY());
 	System.out.println("circ Velocity: " + circle.getVelX() + ", " + circle.getVelY());
@@ -270,8 +252,7 @@ public class Sim extends JFrame implements ActionListener{
 	System.out.println("circ Kinetic Energy: " + circle.getKinEnergy());
 	System.out.println("circ Thermal Energy: " + circle.getThermEnergy());
 	System.out.println("circ Total Energy: " + circle.getTotEnergy());
-	setup();
-	repaint();
+	
     }
 	
     public void stop(){
@@ -306,7 +287,7 @@ public class Sim extends JFrame implements ActionListener{
 	}
 	if (groupcmd.equals("Track 2")){
 	    gground.setColor(new Color(000,000,000));
-	    QuadCurve2D.Double curve = new QuadCurve2D.Double(40,190,300,850,560,190);
+	    QuadCurve2D.Double curve = new QuadCurve2D.Double(35,-1 * (320.0/62500)*Math.pow(35-290,2)+510,300,862,565,-1 * (320.0/62500)*Math.pow(35-290,2)+510);
 	    ((Graphics2D)g).draw(curve);
 	}
 	circle.paint(g);
