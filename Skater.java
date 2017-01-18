@@ -22,15 +22,9 @@ public class Skater{
     private Color color = new Color(200,0,0);
 
     public Skater(){
-<<<<<<< HEAD
-		mass = 50.0;
-		gravity = 9.81;
-		coeff = 0;
-=======
 	mass = 50.0;
 	gravity = 9.81;
 	coeff = 0;
->>>>>>> 539bd9c9c26eed07f8d385fbb0eb035724eb24ea
 	reset();
     }
 	
@@ -119,12 +113,6 @@ public class Skater{
 
     public void setAngle(Vector<Double> old) {
 	double ans;
-<<<<<<< HEAD
-	/*if (old.get(1)-this.position.get(1) < 0.01 || old.get(1)-this.position.get(1) > -0.01) {
-	  ans = this.angle + Math.PI;
-	  }*/
-=======
->>>>>>> 539bd9c9c26eed07f8d385fbb0eb035724eb24ea
 	if ((old.get(0) - this.position.get(0)) <= 0 && (old.get(1) - this.position.get(1)) <= 0) {
 	    ans = 2*Math.PI - Math.atan((old.get(1)-this.position.get(1))/(old.get(0)-this.position.get(0)));
 	    this.angle = ans;
